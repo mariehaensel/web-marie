@@ -4,11 +4,17 @@ const [kontakt] = await getCollection('kontakt');
 const year = new Date().getFullYear();
 ---
 <footer class="site-footer">
-  <div class="container">
-    <p>&copy; {year} Marie Hänsel {kontakt?.data.email ? `— ${kontakt.data.email}` : ''}</p>
-    <ul>
-      <li><a href="/impressum">Impressum</a></li>
-      <li><a href="/datenschutz">Datenschutz</a></li>
-    </ul>
+  <div class="container footer-inner">
+    <div>
+      <p class="footer-kicker">Kontakt</p>
+      {kontakt?.data.email && <a class="footer-email" href={`mailto:${kontakt.data.email}`}>{kontakt.data.email}</a>}
+    </div>
+    <div class="footer-meta">
+      <p>&copy; {year} Marie Hänsel</p>
+      <ul>
+        <li><a href="/impressum">Impressum</a></li>
+        <li><a href="/datenschutz">Datenschutz</a></li>
+      </ul>
+    </div>
   </div>
 </footer>
