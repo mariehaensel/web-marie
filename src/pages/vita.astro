@@ -1,0 +1,11 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+const [vitaEntry] = await getCollection('vita');
+const { Content } = vitaEntry ? await render(vitaEntry) : { Content: null };
+---
+<Layout title="Vita">
+  <h1 class="page-title">Vita</h1>
+  {Content && <Content />}
+</Layout>

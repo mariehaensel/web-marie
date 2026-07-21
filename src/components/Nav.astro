@@ -1,0 +1,18 @@
+---
+const { pathname } = Astro.url;
+const links = [
+  { href: '/agenda', label: 'Agenda' },
+  { href: '/vita', label: 'Vita' },
+  { href: '/media', label: 'Media' },
+  { href: '/kontakt', label: 'Kontakt' },
+];
+---
+<nav class="site-nav">
+  <ul>
+    {links.map(link => (
+      <li>
+        <a href={link.href} class={pathname.startsWith(link.href) ? 'active' : ''}>{link.label}</a>
+      </li>
+    ))}
+  </ul>
+</nav>

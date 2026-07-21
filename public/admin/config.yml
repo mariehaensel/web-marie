@@ -1,0 +1,67 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+locale: "de"
+
+collections:
+  - name: "agenda"
+    label: "Agenda / Termine"
+    label_singular: "Termin"
+    folder: "src/content/agenda"
+    create: true
+    delete: true
+    slug: "{{fields.date}}-{{fields.slug}}"
+    identifier_field: slug
+    summary: "{{date}} — {{piece}}"
+    sortable_fields: ["date"]
+    fields:
+      - { label: "Interner Titel (für Dateiname, z.B. bach-weihnachtsoratorium)", name: "slug", widget: "string" }
+      - { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - { label: "Uhrzeit", name: "time", widget: "string", required: false, hint: "z. B. 19:30 Uhr" }
+      - { label: "Werk / Programm", name: "piece", widget: "string" }
+      - { label: "Komponist", name: "composer", widget: "string", required: false }
+      - { label: "Mitwirkende", name: "colleagues", widget: "text", required: false }
+      - { label: "Orchester / Dirigent", name: "ensemble", widget: "string", required: false }
+      - { label: "Ort / Venue", name: "venue", widget: "string" }
+      - { label: "Ticket-Link", name: "ticketLink", widget: "string", required: false }
+      - { label: "Notiz (optional, im Text sichtbar)", name: "body", widget: "text", required: false }
+
+  - name: "vita"
+    label: "Vita"
+    editor: { preview: false }
+    files:
+      - label: "Vita-Text"
+        name: "vita"
+        file: "src/content/vita/vita.md"
+        fields:
+          - { label: "Seitentitel", name: "title", widget: "string", default: "Vita" }
+          - { label: "Text", name: "body", widget: "markdown" }
+
+  - name: "kontakt"
+    label: "Kontakt"
+    editor: { preview: false }
+    files:
+      - label: "Kontaktdaten"
+        name: "kontakt"
+        file: "src/content/kontakt/kontakt.md"
+        fields:
+          - { label: "Telefon", name: "phone", widget: "string", required: false }
+          - { label: "E-Mail", name: "email", widget: "string" }
+          - { label: "Instagram-Link", name: "instagram", widget: "string", required: false }
+          - { label: "Zusatztext", name: "body", widget: "text", required: false }
+
+  - name: "media"
+    label: "Media / Galerie"
+    label_singular: "Bild"
+    folder: "src/content/media"
+    create: true
+    delete: true
+    slug: "{{fields.title}}"
+    fields:
+      - { label: "Titel", name: "title", widget: "string" }
+      - { label: "Bild", name: "image", widget: "image" }
+      - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }

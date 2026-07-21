@@ -1,0 +1,14 @@
+---
+import { getCollection } from 'astro:content';
+const [kontakt] = await getCollection('kontakt');
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container">
+    <p>&copy; {year} Marie Hänsel {kontakt?.data.email ? `— ${kontakt.data.email}` : ''}</p>
+    <ul>
+      <li><a href="/impressum">Impressum</a></li>
+      <li><a href="/datenschutz">Datenschutz</a></li>
+    </ul>
+  </div>
+</footer>

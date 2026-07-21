@@ -1,0 +1,189 @@
+:root {
+  --ink: #1b1b1b;
+  --paper: #faf8f5;
+  --line: #ddd7cc;
+  --accent: #8a6d3b;
+  --muted: #6b6b6b;
+  --max-width: 880px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: Georgia, 'Times New Roman', serif;
+  line-height: 1.6;
+}
+
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+header.site-header {
+  border-bottom: 1px solid var(--line);
+  padding: 2rem 0 1.5rem;
+}
+
+header.site-header .container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.site-title {
+  font-size: 2rem;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+
+.site-title a { color: var(--ink); }
+
+.site-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+nav.site-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+}
+
+nav.site-nav a.active {
+  border-bottom: 2px solid var(--accent);
+}
+
+main {
+  padding: 3rem 0 4rem;
+  min-height: 50vh;
+}
+
+h1.page-title {
+  font-size: 1.8rem;
+  letter-spacing: 0.04em;
+  margin-bottom: 2rem;
+}
+
+.agenda-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.agenda-entry {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 1.75rem;
+}
+
+.agenda-date {
+  font-weight: bold;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.agenda-date .time {
+  display: block;
+  font-weight: normal;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.agenda-piece {
+  font-size: 1.15rem;
+  margin: 0 0 0.35rem;
+}
+
+.agenda-meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  margin: 0.15rem 0;
+}
+
+.agenda-empty {
+  color: var(--muted);
+  font-style: italic;
+}
+
+.media-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.media-grid figure {
+  margin: 0;
+}
+
+.media-grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--line);
+}
+
+.media-grid figcaption {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.kontakt-info p {
+  margin: 0.4rem 0;
+}
+
+footer.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 2rem 0;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+footer.site-footer .container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+footer.site-footer ul {
+  list-style: none;
+  display: flex;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+}
+
+.legal-page {
+  max-width: 700px;
+}
+
+.legal-page h2 {
+  font-size: 1.1rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .agenda-entry {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+}

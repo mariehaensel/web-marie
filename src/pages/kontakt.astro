@@ -1,0 +1,16 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+const [entry] = await getCollection('kontakt');
+const { Content } = entry ? await render(entry) : { Content: null };
+---
+<Layout title="Kontakt">
+  <h1 class="page-title">Kontakt</h1>
+  <div class="kontakt-info">
+    {entry?.data.phone && <p>Telefon: <a href={`tel:${entry.data.phone.replace(/\s+/g, '')}`}>{entry.data.phone}</a></p>}
+    {entry?.data.email && <p>E-Mail: <a href={`mailto:${entry.data.email}`}>{entry.data.email}</a></p>}
+    {entry?.data.instagram && <p>Instagram: <a href={entry.data.instagram} target="_blank" rel="noopener">{entry.data.instagram}</a></p>}
+  </div>
+  {Content && <div style="margin-top:1.5rem;"><Content /></div>}
+</Layout>

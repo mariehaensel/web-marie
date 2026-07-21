@@ -1,0 +1,31 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const agenda = (await getCollection('agenda'))
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+const dateFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
+---
+<Layout title="Agenda" description="Konzert- und Opern-Termine von Marie Hänsel">
+  <h1 class="page-title">Agenda</h1>
+  {agenda.length === 0 && <p class="agenda-empty">Aktuell sind keine Termine hinterlegt.</p>}
+  <div class="agenda-list">
+    {agenda.map(entry => (
+      <div class="agenda-entry">
+        <div class="agenda-date">
+          {dateFormatter.format(entry.data.date)}
+          {entry.data.time && <span class="time">{entry.data.time}</span>}
+        </div>
+        <div>
+          <p class="agenda-piece">{entry.data.piece}</p>
+          {entry.data.composer && <p class="agenda-meta">{entry.data.composer}</p>}
+          {entry.data.colleagues && <p class="agenda-meta">{entry.data.colleagues}</p>}
+          {entry.data.ensemble && <p class="agenda-meta">{entry.data.ensemble}</p>}
+          {entry.data.venue && <p class="agenda-meta">{entry.data.venue}</p>}
+          {entry.data.ticketLink && <p class="agenda-meta"><a href={entry.data.ticketLink}>Tickets →</a></p>}
+        </div>
+      </div>
+    ))}
+  </div>
+</Layout>
