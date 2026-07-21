@@ -1,6 +1,6 @@
 ---
-heroImage: "/images/uploads/hero-test.jpeg"
-heroImageAlt: "Marie Hänsel als Blonde in Die Entführung aus dem Serail, © Nasser Hashemi"
+heroImage: "/images/uploads/hero-placeholder.svg"
+heroImageAlt: "Platzhalter-Portrait von Marie Hänsel"
 ---
 
 Sopranistin mit Schwerpunkt Oper, Konzert und Lied. Platzhalter-Teasertext für die Startseite —
