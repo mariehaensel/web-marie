@@ -39,4 +39,12 @@ const media = defineCollection({
   }),
 });
 
-export const collections = { agenda, vita, kontakt, media };
+const home = defineCollection({
+  type: 'content',
+  schema: z.object({
+    heroImage: z.string(),
+    heroImageAlt: z.string().optional(),
+  }),
+});
+
+export const collections = { agenda, vita, kontakt, media, home };

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1200" viewBox="0 0 900 1200">
+  <rect width="900" height="1200" fill="#c9c6bf"/>
+  <circle cx="450" cy="470" r="160" fill="#a9a59c"/>
+  <path d="M180 1050 C180 820 320 700 450 700 C580 700 720 820 720 1050 L720 1200 L180 1200 Z" fill="#a9a59c"/>
+  <text x="450" y="1140" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="26" fill="#6d6a63">Platzhalter-Portrait</text>
+</svg>

@@ -8,6 +8,18 @@ public_folder: "/images/uploads"
 locale: "de"
 
 collections:
+  - name: "home"
+    label: "Startseite"
+    editor: { preview: false }
+    files:
+      - label: "Hero / Startseite"
+        name: "home"
+        file: "src/content/home/home.md"
+        fields:
+          - { label: "Portraitfoto", name: "heroImage", widget: "image" }
+          - { label: "Alt-Text zum Foto", name: "heroImageAlt", widget: "string", required: false }
+          - { label: "Kurzer Teasertext", name: "body", widget: "text" }
+
   - name: "agenda"
     label: "Agenda / Termine"
     label_singular: "Termin"

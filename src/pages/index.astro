@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
 import { getCollection } from 'astro:content';
 
 const agenda = (await getCollection('agenda'))
@@ -10,7 +11,8 @@ const agenda = (await getCollection('agenda'))
 const dateFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' });
 ---
 <Layout title="Startseite">
-  <h1 class="page-title">Nächste Termine</h1>
+  <Hero />
+  <h2 class="page-title section-title">Nächste Termine</h2>
   {agenda.length === 0 && <p class="agenda-empty">Aktuell sind keine Termine hinterlegt — siehe <a href="/agenda">Agenda</a>.</p>}
   <div class="agenda-list">
     {agenda.map(entry => (
