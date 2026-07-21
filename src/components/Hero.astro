@@ -4,15 +4,17 @@ import { getCollection, render } from 'astro:content';
 const [entry] = await getCollection('home');
 const { Content } = entry ? await render(entry) : { Content: null };
 ---
-<section class="hero-bleed">
-  <div class="hero-text-wrap reveal">
-    <p class="hero-watermark" aria-hidden="true">SOPRAN</p>
-    <h1 class="hero-name">Marie<br />Hänsel</h1>
+<section class="hero-section reveal">
+  <div class="hero-media">
+    <img src={entry?.data.heroImage} alt={entry?.data.heroImageAlt ?? 'Portrait'} />
+    <div class="hero-scrim-top" aria-hidden="true"></div>
+    <div class="hero-scrim-bottom" aria-hidden="true"></div>
+  </div>
+  <div class="hero-overlay-text">
+    <h1 class="hero-name">Marie Hänsel</h1>
     <p class="hero-subtitle">Oper · Konzert · Lied</p>
-    {Content && <div class="hero-intro"><Content /></div>}
     <a class="hero-cta" href="/agenda">Termine ansehen →</a>
   </div>
-  <div class="hero-photo-wrap">
-    <img src={entry?.data.heroImage} alt={entry?.data.heroImageAlt ?? 'Portrait'} />
-  </div>
+  <span class="hero-sentinel" aria-hidden="true"></span>
 </section>
+{Content && <div class="hero-intro-below reveal"><Content /></div>}

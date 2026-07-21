@@ -12,7 +12,7 @@ const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
 const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
 ---
-<Layout title="Startseite">
+<Layout title="Startseite" hero={true}>
   <Hero />
   <h2 class="page-title section-title reveal">Nächste Termine</h2>
   {agenda.length === 0 && <p class="agenda-empty">Aktuell sind keine Termine hinterlegt — siehe <a href="/agenda">Agenda</a>.</p>}
