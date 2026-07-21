@@ -8,12 +8,6 @@ const { Content } = entry ? await render(entry) : { Content: null };
   <div class="hero-media">
     <img src={entry?.data.heroImage} alt={entry?.data.heroImageAlt ?? 'Portrait'} />
     <div class="hero-scrim-top" aria-hidden="true"></div>
-    <div class="hero-scrim-bottom" aria-hidden="true"></div>
-  </div>
-  <div class="hero-overlay-text">
-    <h1 class="hero-name">Marie Hänsel</h1>
-    <p class="hero-subtitle">Oper · Konzert · Lied</p>
-    <a class="hero-cta" href="/agenda">Termine ansehen →</a>
   </div>
   <span class="hero-sentinel" aria-hidden="true"></span>
 </section>

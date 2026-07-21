@@ -23,7 +23,10 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
 <body>
   <header class={`site-header ${hero ? 'header-overlay' : ''}`} id="site-header">
     <div class="container site-header-inner">
-      <p class="site-title"><a href="/">Marie Hänsel</a></p>
+      <div class="site-brand">
+        <p class="site-title"><a href="/">Marie Hänsel</a></p>
+        <p class="site-subtitle-header">Sopran</p>
+      </div>
       <Nav />
     </div>
   </header>
