@@ -1,0 +1,25 @@
+---
+import { getCollection } from 'astro:content';
+
+const items = (await getCollection('media')).slice(0, 10);
+---
+<section class="media-section reveal">
+  <h2 class="page-title">Audio &amp; Video</h2>
+  <div class="media-scroll">
+    {items.map(item => (
+      item.data.videoUrl ? (
+        <a class="media-tile" href={item.data.videoUrl} target="_blank" rel="noopener">
+          <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          <span class="media-play" aria-hidden="true">▶</span>
+          {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
+        </a>
+      ) : (
+        <div class="media-tile">
+          <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
+        </div>
+      )
+    ))}
+  </div>
+  <a class="section-link" href="/media">Alle Medien ansehen →</a>
+</section>

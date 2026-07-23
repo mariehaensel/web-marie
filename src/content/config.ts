@@ -36,6 +36,7 @@ const media = defineCollection({
     title: z.string(),
     image: z.string(),
     caption: z.string().optional(),
+    videoUrl: z.string().optional(),
   }),
 });
 

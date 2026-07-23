@@ -1,5 +1,5 @@
 ---
-heroImage: "/images/uploads/hero-portrait.jpg"
+heroImage: "/images/uploads/hero-portrait-2.jpg"
 heroImageAlt: "Portrait von Marie Hänsel"
 ---
 

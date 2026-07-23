@@ -67,13 +67,14 @@ collections:
           - { label: "Zusatztext", name: "body", widget: "text", required: false }
 
   - name: "media"
-    label: "Media / Galerie"
-    label_singular: "Bild"
+    label: "Media / Audio / Video"
+    label_singular: "Eintrag"
     folder: "src/content/media"
     create: true
     delete: true
     slug: "{{fields.title}}"
     fields:
       - { label: "Titel", name: "title", widget: "string" }
-      - { label: "Bild", name: "image", widget: "image" }
+      - { label: "Bild (Vorschaubild oder Foto)", name: "image", widget: "image" }
       - { label: "Bildunterschrift", name: "caption", widget: "string", required: false }
+      - { label: "Video-/Audio-Link (YouTube, Vimeo, Soundcloud – optional)", name: "videoUrl", widget: "string", required: false }

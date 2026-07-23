@@ -1,0 +1,27 @@
+---
+import { getCollection } from 'astro:content';
+const [kontakt] = await getCollection('kontakt');
+---
+<div class="contact-grid">
+  <div class="contact-info">
+    {kontakt?.data.phone && <p>Telefon: <a href={`tel:${kontakt.data.phone.replace(/\s+/g, '')}`}>{kontakt.data.phone}</a></p>}
+    {kontakt?.data.email && <p>E-Mail: <a href={`mailto:${kontakt.data.email}`}>{kontakt.data.email}</a></p>}
+    {kontakt?.data.instagram && <p>Instagram: <a href={kontakt.data.instagram} target="_blank" rel="noopener">{kontakt.data.instagram}</a></p>}
+  </div>
+  <form class="contact-form" name="kontakt" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/danke">
+    <input type="hidden" name="form-name" value="kontakt" />
+    <p class="hidden-field">
+      <label>Nicht ausfüllen: <input name="bot-field" /></label>
+    </p>
+    <label for="name">Name</label>
+    <input id="name" name="name" type="text" required />
+
+    <label for="email">E-Mail</label>
+    <input id="email" name="email" type="email" required />
+
+    <label for="message">Nachricht</label>
+    <textarea id="message" name="message" rows="5" required></textarea>
+
+    <button type="submit">Nachricht senden</button>
+  </form>
+</div>
