@@ -11,6 +11,7 @@ const links = [
   <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
   </button>
+  <div class="nav-backdrop" id="nav-backdrop"></div>
   <div class="nav-panel" id="nav-panel">
     <ul>
       {links.map(link => (
@@ -26,8 +27,9 @@ const links = [
   const nav = document.getElementById('site-nav');
   const toggle = document.getElementById('nav-toggle');
   const panel = document.getElementById('nav-panel');
+  const backdrop = document.getElementById('nav-backdrop');
 
-  if (nav && toggle && panel) {
+  if (nav && toggle && panel && backdrop) {
     const close = () => {
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
@@ -38,6 +40,7 @@ const links = [
       toggle.setAttribute('aria-expanded', String(isOpen));
     });
 
+    backdrop.addEventListener('click', close);
     panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
 
     document.addEventListener('keydown', (e) => {
