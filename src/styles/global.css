@@ -753,12 +753,20 @@ footer.site-footer {
   .vita-section.fullscreen-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 100vh;
     gap: 0;
     align-content: stretch;
   }
 
+  .vita-section.fullscreen-section .vita-photo {
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+  }
+
   .vita-section.fullscreen-section .vita-photo img {
     height: 100%;
+    min-height: 0;
     object-fit: cover;
     border-radius: 0;
   }
@@ -767,6 +775,8 @@ footer.site-footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    min-height: 0;
+    overflow: hidden;
     padding: 3rem clamp(2rem, 6vw, 5rem);
   }
 
