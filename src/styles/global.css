@@ -706,6 +706,10 @@ footer.site-footer {
     height: 78vh;
     min-height: 460px;
   }
+  .hero-media img {
+    transform: none;
+    object-position: 68% top;
+  }
 }
 
 
