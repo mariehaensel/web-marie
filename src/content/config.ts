@@ -18,6 +18,7 @@ const vita = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string().optional(),
+    excerpt: z.string().optional(),
   }),
 });
 

@@ -51,7 +51,8 @@ collections:
         file: "src/content/vita/vita.md"
         fields:
           - { label: "Seitentitel", name: "title", widget: "string", default: "Vita" }
-          - { label: "Text", name: "body", widget: "markdown" }
+          - { label: "Kurztext für die Startseite", name: "excerpt", widget: "text", hint: "Kurze Zusammenfassung (2-3 Sätze), die auf der Startseite angezeigt wird." }
+          - { label: "Vollständiger Text (für die Vita-Seite)", name: "body", widget: "markdown" }
 
   - name: "kontakt"
     label: "Kontakt"
