@@ -7,12 +7,45 @@ const links = [
   { href: '/kontakt', label: 'Kontakt' },
 ];
 ---
-<nav class="site-nav">
-  <ul>
-    {links.map(link => (
-      <li>
-        <a href={link.href} class={pathname.startsWith(link.href) ? 'active' : ''}>{link.label}</a>
-      </li>
-    ))}
-  </ul>
+<nav class="site-nav" id="site-nav">
+  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-panel" id="nav-panel">
+    <ul>
+      {links.map(link => (
+        <li>
+          <a href={link.href} class={pathname.startsWith(link.href) ? 'active' : ''}>{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  </div>
 </nav>
+
+<script>
+  const nav = document.getElementById('site-nav');
+  const toggle = document.getElementById('nav-toggle');
+  const panel = document.getElementById('nav-panel');
+
+  if (nav && toggle && panel) {
+    const close = () => {
+      nav.classList.remove('nav-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    };
+
+    toggle.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('nav-open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    panel.querySelectorAll('a').forEach((a) => a.addEventListener('click', close));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!nav.contains(e.target as Node)) close();
+    });
+  }
+</script>
