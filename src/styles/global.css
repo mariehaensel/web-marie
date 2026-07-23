@@ -67,24 +67,18 @@ header.site-header.header-overlay .site-subtitle-header {
 header.site-header.header-overlay .site-subtitle-header { color: rgba(255, 255, 255, 0.85); }
 header.site-header.header-overlay .nav-toggle span { background: #fff; }
 header.site-header.header-overlay.scrolled .site-title a,
-header.site-header.header-overlay.scrolled .site-subtitle-header,
-header.site-header.header-overlay.menu-active .site-title a,
-header.site-header.header-overlay.menu-active .site-subtitle-header {
+header.site-header.header-overlay.scrolled .site-subtitle-header {
   text-shadow: none;
 }
 
-header.site-header.header-overlay.scrolled,
-header.site-header.header-overlay.menu-active {
+header.site-header.header-overlay.scrolled {
   background: rgba(245, 244, 240, 0.92);
   border-bottom-color: var(--line);
   backdrop-filter: blur(6px);
 }
-header.site-header.header-overlay.scrolled .site-title a,
-header.site-header.header-overlay.menu-active .site-title a { color: var(--ink); }
-header.site-header.header-overlay.scrolled .site-subtitle-header,
-header.site-header.header-overlay.menu-active .site-subtitle-header { color: var(--muted); }
-header.site-header.header-overlay.scrolled .nav-toggle span,
-header.site-header.header-overlay.menu-active .nav-toggle span { background: var(--ink); }
+header.site-header.header-overlay.scrolled .site-title a { color: var(--ink); }
+header.site-header.header-overlay.scrolled .site-subtitle-header { color: var(--muted); }
+header.site-header.header-overlay.scrolled .nav-toggle span { background: var(--ink); }
 
 .site-header-inner {
   display: flex;
@@ -108,21 +102,34 @@ header.site-header.header-overlay.menu-active .nav-toggle span { background: var
   text-transform: none;
   margin: 0;
   line-height: 1;
+  animation: brand-fade-in 0.9s ease 0.1s both;
 }
 
 .site-title a { color: var(--ink); }
 .site-title a:hover { text-decoration: none; color: var(--accent); }
 
 .site-subtitle-header {
+  display: block;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 1.15rem;
+  text-align: right;
   text-transform: none;
   letter-spacing: 0.06em;
   font-weight: 200;
   color: var(--muted);
-  margin: 0.1rem 0 0;
+  margin: 0.15rem 0 0;
   transition: color 0.3s ease;
+  animation: brand-fade-in 0.9s ease 0.35s both;
+}
+
+@keyframes brand-fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-title, .site-subtitle-header { animation: none; }
 }
 
 /* Burger nav */
@@ -298,6 +305,7 @@ h1.page-title, h2.page-title {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: center top;
   display: block;
   filter: grayscale(0.1) contrast(1.05);
 }

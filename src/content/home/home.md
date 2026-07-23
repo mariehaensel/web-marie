@@ -1,6 +1,6 @@
 ---
-heroImage: "/images/uploads/hero-placeholder.svg"
-heroImageAlt: "Platzhalter-Portrait von Marie Hänsel"
+heroImage: "/images/uploads/hero-portrait.jpg"
+heroImageAlt: "Portrait von Marie Hänsel"
 ---
 
 Sopranistin mit Schwerpunkt Oper, Konzert und Lied. Platzhalter-Teasertext für die Startseite —

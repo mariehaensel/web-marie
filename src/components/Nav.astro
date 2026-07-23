@@ -28,19 +28,16 @@ const links = [
   const toggle = document.getElementById('nav-toggle');
   const panel = document.getElementById('nav-panel');
   const backdrop = document.getElementById('nav-backdrop');
-  const header = document.getElementById('site-header');
 
   if (nav && toggle && panel && backdrop) {
     const close = () => {
       nav.classList.remove('nav-open');
       toggle.setAttribute('aria-expanded', 'false');
-      header?.classList.remove('menu-active');
     };
 
     toggle.addEventListener('click', () => {
       const isOpen = nav.classList.toggle('nav-open');
       toggle.setAttribute('aria-expanded', String(isOpen));
-      header?.classList.toggle('menu-active', isOpen);
     });
 
     backdrop.addEventListener('click', close);
