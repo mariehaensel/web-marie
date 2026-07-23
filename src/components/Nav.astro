@@ -1,4 +1,8 @@
 ---
+interface Props {
+  hero?: boolean;
+}
+const { hero = false } = Astro.props;
 const { pathname } = Astro.url;
 const links = [
   { href: '/agenda', label: 'Agenda' },
@@ -8,7 +12,7 @@ const links = [
 ];
 ---
 <nav class="site-nav" id="site-nav">
-  <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Menü öffnen">
+  <button class={`nav-toggle ${hero ? 'nav-toggle-overlay' : ''}`} id="nav-toggle" aria-expanded="false" aria-controls="nav-panel" aria-label="Menü öffnen">
     <span></span><span></span><span></span>
   </button>
   <div class="nav-backdrop" id="nav-backdrop"></div>

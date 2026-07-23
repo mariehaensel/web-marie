@@ -4,12 +4,12 @@ import { getCollection, render } from 'astro:content';
 const [entry] = await getCollection('vita');
 const { Content } = entry ? await render(entry) : { Content: null };
 ---
-<section class="vita-section reveal">
+<section class="fullscreen-section vita-section reveal">
   <div class="vita-photo">
     <img src="/images/uploads/vita-portrait.jpg" alt="Portrait von Marie Hänsel" loading="lazy" />
   </div>
-  <div class="vita-text">
-    <h2 class="page-title">Vita</h2>
+  <div class="vita-text container">
+    <h2 class="section-heading">Vita</h2>
     {Content && <div class="vita-body"><Content /></div>}
     <a class="section-link" href="/vita">Ausführliche Vita lesen →</a>
   </div>

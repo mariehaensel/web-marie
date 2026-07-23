@@ -1,8 +1,7 @@
 ---
-import { getCollection, render } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 const [entry] = await getCollection('home');
-const { Content } = entry ? await render(entry) : { Content: null };
 ---
 <section class="hero-section reveal">
   <div class="hero-media">
@@ -11,4 +10,3 @@ const { Content } = entry ? await render(entry) : { Content: null };
   </div>
   <span class="hero-sentinel" aria-hidden="true"></span>
 </section>
-{Content && <div class="hero-intro-below reveal"><Content /></div>}

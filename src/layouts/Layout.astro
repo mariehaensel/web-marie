@@ -32,7 +32,7 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
       </div>
     </div>
   </header>
-  <Nav />
+  <Nav hero={hero} />
   <main>
     <div class="container">
       <slot />
@@ -59,13 +59,18 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
       }
 
       const header = document.getElementById('site-header');
+      const toggle = document.getElementById('nav-toggle');
       const sentinel = document.querySelector('.hero-sentinel');
       if (header && header.classList.contains('header-overlay') && sentinel) {
+        const setScrolled = (isScrolled) => {
+          header.classList.toggle('scrolled', isScrolled);
+          toggle?.classList.toggle('scrolled', isScrolled);
+        };
         if (!('IntersectionObserver' in window)) {
-          header.classList.add('scrolled');
+          setScrolled(true);
         } else {
           const headerObs = new IntersectionObserver((entries) => {
-            entries.forEach(e => header.classList.toggle('scrolled', !e.isIntersecting));
+            entries.forEach(e => setScrolled(!e.isIntersecting));
           }, { rootMargin: '-80px 0px 0px 0px', threshold: 0 });
           headerObs.observe(sentinel);
         }
