@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 
 const [entry] = await getCollection('home');
 ---
-<section class="hero-section reveal">
+<section class="hero-section">
   <div class="hero-media">
     <img src={entry?.data.heroImage} alt={entry?.data.heroImageAlt ?? 'Portrait'} />
     <div class="hero-scrim-top" aria-hidden="true"></div>
