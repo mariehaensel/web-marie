@@ -573,18 +573,11 @@ a.media-tile:hover { text-decoration: none; }
 }
 
 /* Contact form */
-.contact-grid {
-  display: grid;
-  grid-template-columns: minmax(200px, 280px) 1fr;
-  gap: 2.5rem;
-  align-items: start;
-}
-
 .contact-form {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  max-width: 480px;
+  max-width: 600px;
 }
 
 .contact-form label {
@@ -642,10 +635,50 @@ a.media-tile:hover { text-decoration: none; }
   white-space: nowrap;
 }
 
-@media (max-width: 700px) {
-  .contact-grid {
-    grid-template-columns: 1fr;
-  }
+/* Kontakt section background photo */
+.kontakt-section {
+  min-height: 640px;
+  color: #fff;
+}
+
+.kontakt-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.kontakt-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 78% center;
+  display: block;
+  filter: contrast(1.18) saturate(1.05) brightness(0.85);
+}
+
+.kontakt-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, rgba(16, 17, 20, 0.55) 0%, rgba(16, 17, 20, 0.42) 40%, rgba(16, 17, 20, 0.15) 75%);
+}
+
+.kontakt-section .container {
+  max-width: 560px;
+  margin: 0;
+  padding-left: max(1.5rem, calc((100vw - 960px) / 2 + 1.5rem));
+}
+
+.kontakt-section .section-heading { color: #fff; }
+.kontakt-section .contact-form label { color: rgba(255, 255, 255, 0.85); }
+
+.kontakt-section .contact-form button {
+  background: #fff;
+  border-color: #fff;
+  color: var(--ink);
+}
+.kontakt-section .contact-form button:hover {
+  background: transparent;
+  color: #fff;
 }
 
 /* Footer */
@@ -673,12 +706,26 @@ footer.site-footer {
   margin: 0 0 0.5rem;
 }
 
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
 .footer-email {
   font-size: 1.5rem;
   font-weight: 700;
   color: #f5f4f0;
 }
 .footer-email:hover { color: var(--accent-light); text-decoration: none; }
+
+.footer-social {
+  display: inline-flex;
+  color: #c8c6c0;
+  transition: color 0.2s ease;
+}
+.footer-social:hover { color: var(--accent-light); }
 
 .footer-meta {
   text-align: right;
@@ -724,7 +771,7 @@ footer.site-footer {
 /* Fullscreen desktop sections */
 @media (min-width: 900px) {
   html {
-    scroll-snap-type: y proximity;
+    scroll-snap-type: y mandatory;
   }
 
   .hero-section,
@@ -768,6 +815,7 @@ footer.site-footer {
     height: 100%;
     min-height: 0;
     object-fit: cover;
+    object-position: center top;
     border-radius: 0;
   }
 
