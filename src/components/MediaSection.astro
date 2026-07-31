@@ -73,7 +73,7 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
     const updateProgress = () => {
       const max = scroll.scrollWidth - scroll.clientWidth;
       const pct = max > 0 ? (scroll.scrollLeft / max) * 100 : 0;
-      if (progress instanceof HTMLElement) progress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+      if (progress instanceof HTMLElement) progress.style.transform = `scaleX(${Math.min(100, Math.max(0, pct)) / 100})`;
     };
     scroll.addEventListener('scroll', updateProgress, { passive: true });
     updateProgress();
