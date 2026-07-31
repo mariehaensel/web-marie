@@ -46,7 +46,7 @@ header.site-header {
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(245, 244, 240, 0.6);
+  background: rgba(245, 244, 240, 0.48);
   backdrop-filter: blur(6px);
   z-index: 20;
   transition: background 0.3s ease, border-color 0.3s ease;
@@ -71,7 +71,7 @@ header.site-header.header-overlay.scrolled .site-subtitle-header {
 }
 
 header.site-header.header-overlay.scrolled {
-  background: rgba(245, 244, 240, 0.6);
+  background: rgba(245, 244, 240, 0.48);
   border-bottom-color: var(--line);
   backdrop-filter: blur(6px);
 }
@@ -787,7 +787,7 @@ a.media-tile:hover { text-decoration: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 78% center;
+  object-position: 78% 28%;
   display: block;
   filter: contrast(1.18) saturate(1.05) brightness(0.92);
 }
@@ -799,7 +799,7 @@ a.media-tile:hover { text-decoration: none; }
 }
 
 .kontakt-section .container {
-  max-width: 560px;
+  max-width: 680px;
   margin: 0;
   padding-left: max(1.5rem, calc((100vw - 960px) / 2 + 1.5rem));
 }
@@ -819,11 +819,11 @@ a.media-tile:hover { text-decoration: none; }
 
 /* Footer */
 footer.site-footer {
-  background: var(--ink);
+  background: #241f1a;
   color: #a9a69f;
   border-top: none;
   padding: 3.5rem 0;
-  margin-top: 3rem;
+  margin-top: 0;
 }
 
 .footer-inner {
@@ -911,7 +911,8 @@ footer.site-footer {
   }
 
   .hero-section,
-  .fullscreen-section {
+  .fullscreen-section,
+  footer.site-footer {
     scroll-snap-align: start;
   }
 
@@ -936,11 +937,11 @@ footer.site-footer {
   .vita-section.fullscreen-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: calc(100vh - 132px);
+    grid-template-rows: calc(100vh - 80px);
     gap: 0;
     align-content: stretch;
     align-items: stretch;
-    padding-top: 132px;
+    padding-top: 80px;
   }
 
   .vita-section.fullscreen-section .vita-photo {
@@ -968,6 +969,7 @@ footer.site-footer {
 
   .media-section.fullscreen-section {
     background: var(--ink);
+    padding-top: 150px;
   }
   .media-section.fullscreen-section .section-heading { color: #fff; }
   .media-section.fullscreen-section .section-watermark { color: #fff; opacity: 0.04; }
