@@ -65,6 +65,7 @@ collections:
           - { label: "Telefon", name: "phone", widget: "string", required: false }
           - { label: "E-Mail", name: "email", widget: "string" }
           - { label: "Instagram-Link", name: "instagram", widget: "string", required: false }
+          - { label: "WhatsApp-Nummer (nur Ziffern mit Ländervorwahl, z.B. 4915123456789)", name: "whatsapp", widget: "string", required: false }
           - { label: "Zusatztext", name: "body", widget: "text", required: false }
 
   - name: "media"

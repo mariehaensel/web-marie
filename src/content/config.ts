@@ -28,6 +28,7 @@ const kontakt = defineCollection({
     phone: z.string().optional(),
     email: z.string(),
     instagram: z.string().optional(),
+    whatsapp: z.string().optional(),
   }),
 });
 
