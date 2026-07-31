@@ -847,7 +847,7 @@ footer.site-footer {
 
 .footer-contact-row {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   gap: 2.5rem;
   flex-wrap: wrap;
 }
