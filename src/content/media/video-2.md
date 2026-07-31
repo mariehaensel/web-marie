@@ -1,7 +1,7 @@
 ---
-title: "Video 2"
-image: "https://img.youtube.com/vi/v347o-NCmuw/hqdefault.jpg"
-caption: "Konzertmitschnitt"
-videoUrl: "https://www.youtube.com/watch?v=v347o-NCmuw"
-category: "video"
+title: Hugo-Wolf-Akademie
+image: /images/uploads/bildschirmfoto-2026-07-31-um-15.45.02.png
+caption: Hugo-Wolf-Akademie
+videoUrl: https://www.youtube.com/watch?v=v347o-NCmuw
+category: video
 ---
