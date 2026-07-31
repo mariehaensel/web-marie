@@ -916,7 +916,7 @@ footer.site-footer {
 
 /* Fullscreen desktop sections */
 @media (min-width: 900px) {
-  html {
+  html:has(.fullscreen-section) {
     scroll-snap-type: y mandatory;
   }
 
