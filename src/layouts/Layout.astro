@@ -39,6 +39,13 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
     </div>
   </main>
   <Footer />
+  <dialog id="lightbox" class="lightbox">
+    <div class="lightbox-inner">
+      <button type="button" class="lightbox-close" aria-label="Schließen">✕</button>
+      <img id="lightbox-img" src="" alt="" />
+      <p id="lightbox-caption" class="lightbox-caption"></p>
+    </div>
+  </dialog>
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
@@ -56,6 +63,26 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
           });
         }, { threshold: 0.15 });
         els.forEach(el => io.observe(el));
+      }
+
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      if (lightbox && lightboxImg && lightboxCaption) {
+        document.addEventListener('click', (e) => {
+          const trigger = e.target.closest('[data-lightbox]');
+          if (!trigger) return;
+          const caption = trigger.getAttribute('data-lightbox-caption') || '';
+          lightboxImg.src = trigger.getAttribute('data-lightbox');
+          lightboxImg.alt = caption;
+          lightboxCaption.textContent = caption;
+          lightbox.showModal();
+        });
+        lightbox.addEventListener('click', (e) => {
+          if (e.target === lightbox || e.target.closest('.lightbox-close')) {
+            lightbox.close();
+          }
+        });
       }
 
       const header = document.getElementById('site-header');

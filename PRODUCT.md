@@ -28,19 +28,18 @@ Marie (or the user on her behalf) updates Agenda entries, Vita text, and Media h
 
 Static site (Astro), hosted on Netlify, no backend or database, no payments, no visitor accounts. The only login surface is the CMS admin. Content lives in Git (private GitHub repo), edited via the CMS or directly in code.
 
-Open/undecided: 8 of the 10 Media tiles are still placeholder images awaiting real photos or recordings — future work must not treat them as real evidence until replaced.
+All Media tiles now show real content: no open placeholders remain.
 
 ## Brand Commitments
 
-Name: "Marie Hänsel", tagline "Sopran". Instagram presence linked in the footer.
+Name: "Marie Hänsel", tagline "Sopran". Real Instagram (linked in footer) and an optional WhatsApp click-to-chat link (currently a placeholder number pending the real one).
 
 ## Evidence on Hand
 
 - Full real Vita biography text (`src/content/vita/vita.md`).
-- 24 real upcoming Agenda entries with real dates, pieces, ensembles, venues.
+- 24 real Agenda entries (upcoming + past, with past years archiving into collapsible groups over time).
 - Real hero and Vita photography (color-graded, custom-cropped per breakpoint).
-- 2 real performance video links (YouTube).
-- 8 of 10 Media tiles are placeholders (labeled "Platzhalter-Bild") — not real evidence yet.
+- Real Media gallery: 7 stage photos (3 credited to photographer Nasser Hashemi) and 5 portraits, grouped and labeled ("Bühnenfotos"/"Portraits"), plus 2 real performance videos ("Mitschnitte") with real YouTube thumbnails.
 
 ## Product Principles
 

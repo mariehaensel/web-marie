@@ -34,7 +34,9 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
     <div class="media-grid">
       {buehne.map(item => (
         <figure>
-          <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          <button type="button" class="media-tile-grid" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
+            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          </button>
           {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
         </figure>
@@ -49,7 +51,9 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
     <div class="media-grid">
       {portraits.map(item => (
         <figure>
-          <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          <button type="button" class="media-tile-grid" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
+            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          </button>
           {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
         </figure>
@@ -68,7 +72,9 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
           </a>
         ) : (
           <figure>
-            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            <button type="button" class="media-tile-grid" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
+              <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            </button>
             {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
           </figure>
         )

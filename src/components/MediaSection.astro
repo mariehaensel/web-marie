@@ -22,19 +22,19 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
       ))}
       {buehne.length > 0 && <span class="media-group-label">Bühnenfotos</span>}
       {buehne.map(item => (
-        <div class="media-tile">
+        <button type="button" class="media-tile" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
           <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
-        </div>
+        </button>
       ))}
       {portraits.length > 0 && <span class="media-group-label">Portraits</span>}
       {portraits.map(item => (
-        <div class="media-tile">
+        <button type="button" class="media-tile" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
           <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
-        </div>
+        </button>
       ))}
       {rest.map(item => (
         item.data.videoUrl ? (
@@ -44,10 +44,10 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
             {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
           </a>
         ) : (
-          <div class="media-tile">
+          <button type="button" class="media-tile" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
             <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
             {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
-          </div>
+          </button>
         )
       ))}
     </div>
