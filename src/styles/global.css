@@ -251,6 +251,23 @@ main .container { padding-top: calc(3rem + var(--header-h)); }
 main:has(.hero-section) .container:first-of-type { padding-top: 0; }
 main:has(.fullscreen-section) { padding-bottom: 0; }
 
+/* This nested container sits below the Vita photo, which already provides
+   plenty of clearance from the header — the generic header-clearance
+   padding above would otherwise stack on top and double the gap, since
+   :first-of-type only matches the first .container of its parent, not
+   this nested one. */
+.vita-text.container {
+  padding-top: 0;
+}
+
+/* Kontakt's heading sits directly at the top of its section (no photo
+   above it to push it down first), so it still needs real clearance from
+   the fixed header — just not the full generic 168px meant for standalone
+   pages, since Kontakt's own centered/fullscreen layout already adds some. */
+.kontakt-section .container {
+  padding-top: calc(1rem + var(--header-h));
+}
+
 h1.page-title, h2.page-title {
   font-size: 1.7rem;
   font-weight: 800;
@@ -305,14 +322,6 @@ h1.page-title, h2.page-title {
   top: 0;
   height: 32%;
   background: linear-gradient(to bottom, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.2) 55%, rgba(0, 0, 0, 0) 100%);
-}
-
-.hero-sentinel {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
 }
 
 /* Agenda */
@@ -621,12 +630,57 @@ h1.page-title, h2.page-title {
 }
 
 /* Media / Audio / Video section */
+.media-scroll-wrap {
+  position: relative;
+}
+
 .media-scroll {
   display: flex;
   gap: 1.25rem;
   overflow-x: auto;
   padding-bottom: 0.5rem;
   scroll-snap-type: x proximity;
+}
+
+.media-nav {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  background: rgba(245, 244, 240, 0.9);
+  color: var(--ink);
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.media-nav:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.media-nav-prev { left: -14px; }
+.media-nav-next { right: -14px; }
+
+@media (max-width: 700px) {
+  .media-nav { display: none; }
+}
+
+.media-progress {
+  height: 2px;
+  background: var(--line);
+  margin-top: 0.6rem;
+  max-width: 280px;
+}
+.media-progress span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width 0.1s linear;
 }
 
 .media-tile {
@@ -655,7 +709,7 @@ h1.page-title, h2.page-title {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(16, 17, 20, 0.55);
+  background: rgba(16, 17, 20, 0.68);
   color: #fff;
   display: flex;
   align-items: center;
@@ -727,6 +781,7 @@ a.media-tile:hover { text-decoration: none; }
 }
 
 .contact-form input,
+.contact-form select,
 .contact-form textarea {
   font-family: var(--font-sans);
   font-size: 1rem;
@@ -737,10 +792,21 @@ a.media-tile:hover { text-decoration: none; }
   color: var(--ink);
 }
 
+.contact-form select {
+  cursor: pointer;
+}
+
 .contact-form input:focus,
+.contact-form select:focus,
 .contact-form textarea:focus {
   outline: none;
   border-color: var(--accent);
+}
+
+.contact-form-note {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 0.85rem 0 0;
 }
 
 .contact-form button {
@@ -788,15 +854,25 @@ a.media-tile:hover { text-decoration: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 78% 28%;
+  object-position: 62% 30%;
   display: block;
-  filter: contrast(1.18) saturate(1.05) brightness(0.92);
+  filter: contrast(1.1) saturate(1.02) brightness(0.94);
 }
 
 .kontakt-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(100deg, rgba(16, 17, 20, 0.4) 0%, rgba(16, 17, 20, 0.3) 40%, rgba(16, 17, 20, 0.1) 75%);
+}
+
+.kontakt-credit {
+  position: absolute;
+  z-index: 1;
+  right: clamp(1.25rem, 5vw, 3.5rem);
+  bottom: 1.25rem;
+  margin: 0;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .kontakt-section .container {
@@ -807,6 +883,7 @@ a.media-tile:hover { text-decoration: none; }
 
 .kontakt-section .section-heading { color: #fff; }
 .kontakt-section .contact-form label { color: rgba(255, 255, 255, 0.85); }
+.kontakt-section .contact-form-note { color: rgba(255, 255, 255, 0.65); }
 
 .kontakt-section .contact-form button {
   background: #fff;
@@ -987,6 +1064,13 @@ footer.site-footer {
   .media-section.fullscreen-section .media-tile img { border-color: rgba(255, 255, 255, 0.15); }
   .media-section.fullscreen-section .media-caption { color: rgba(255, 255, 255, 0.6); }
   .media-section.fullscreen-section .media-credit { color: rgba(255, 255, 255, 0.4); }
+  .media-section.fullscreen-section .media-nav {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: rgba(255, 255, 255, 0.25);
+    color: #fff;
+  }
+  .media-section.fullscreen-section .media-nav:hover { background: var(--accent); border-color: var(--accent); }
+  .media-section.fullscreen-section .media-progress { background: rgba(255, 255, 255, 0.15); }
   .media-section.fullscreen-section .media-group-label {
     color: rgba(255, 255, 255, 0.55);
     border-left-color: rgba(255, 255, 255, 0.15);

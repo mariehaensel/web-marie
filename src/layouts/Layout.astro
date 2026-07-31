@@ -87,8 +87,12 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
 
       const header = document.getElementById('site-header');
       const toggle = document.getElementById('nav-toggle');
-      const sentinel = document.querySelector('.hero-sentinel');
-      if (header && header.classList.contains('header-overlay') && sentinel) {
+      // Sections with a dark/photo background need the light "overlay" header
+      // (white text). Everything else gets the "scrolled" dark-ink header.
+      // Re-evaluated per section instead of a one-way hero->scrolled switch,
+      // so the header stays legible over every dark section, not just the Hero.
+      const darkSections = document.querySelectorAll('.hero-section, .media-section, .kontakt-section');
+      if (header && header.classList.contains('header-overlay') && darkSections.length) {
         const setScrolled = (isScrolled) => {
           header.classList.toggle('scrolled', isScrolled);
           toggle?.classList.toggle('scrolled', isScrolled);
@@ -96,10 +100,14 @@ const { title, description = 'Marie Hänsel – Sopran', hero = false } = Astro.
         if (!('IntersectionObserver' in window)) {
           setScrolled(true);
         } else {
-          const headerObs = new IntersectionObserver((entries) => {
-            entries.forEach(e => setScrolled(!e.isIntersecting));
-          }, { rootMargin: '-80px 0px 0px 0px', threshold: 0 });
-          headerObs.observe(sentinel);
+          const themeObs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+              e.target.dataset.headerActive = e.isIntersecting ? '1' : '0';
+            });
+            const anyDarkActive = Array.from(darkSections).some(s => s.dataset.headerActive === '1');
+            setScrolled(!anyDarkActive);
+          }, { threshold: 0.5 });
+          darkSections.forEach(s => themeObs.observe(s));
         }
       }
     });

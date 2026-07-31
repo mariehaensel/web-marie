@@ -11,8 +11,16 @@
   <label for="email">E-Mail</label>
   <input id="email" name="email" type="email" required />
 
+  <label for="topic">Anliegen</label>
+  <select id="topic" name="topic">
+    <option value="Booking-Anfrage">Booking-Anfrage</option>
+    <option value="Presse">Presse</option>
+    <option value="Sonstiges" selected>Sonstiges</option>
+  </select>
+
   <label for="message">Nachricht</label>
   <textarea id="message" name="message" rows="5" required></textarea>
 
+  <p class="contact-form-note">Ich melde mich in der Regel innerhalb weniger Tage zurück.</p>
   <button type="submit">Nachricht senden</button>
 </form>

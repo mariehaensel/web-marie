@@ -10,7 +10,10 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
 <section class="fullscreen-section media-section">
   <div class="container">
     <h2 class="section-heading">Medien</h2>
-    <div class="media-scroll">
+    <div class="media-scroll-wrap">
+      <button type="button" class="media-nav media-nav-prev" aria-label="Zurück" data-media-prev>‹</button>
+      <button type="button" class="media-nav media-nav-next" aria-label="Weiter" data-media-next>›</button>
+      <div class="media-scroll" data-media-scroll>
       {videos.length > 0 && <span class="media-group-label">Mitschnitte</span>}
       {videos.map(item => (
         <a class="media-tile" href={item.data.videoUrl} target="_blank" rel="noopener">
@@ -50,7 +53,29 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
           </button>
         )
       ))}
+      </div>
     </div>
+    <div class="media-progress" aria-hidden="true"><span data-media-progress></span></div>
     <a class="section-link" href="/media">Alle Medien ansehen →</a>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll('[data-media-scroll]').forEach((scroll) => {
+    if (!(scroll instanceof HTMLElement)) return;
+    const wrap = scroll.closest('.media-scroll-wrap');
+    const prev = wrap?.querySelector('[data-media-prev]');
+    const next = wrap?.querySelector('[data-media-next]');
+    const progress = wrap?.parentElement?.querySelector('[data-media-progress]');
+    const scrollByAmount = (dir: number) => scroll.scrollBy({ left: dir * scroll.clientWidth * 0.8, behavior: 'smooth' });
+    prev?.addEventListener('click', () => scrollByAmount(-1));
+    next?.addEventListener('click', () => scrollByAmount(1));
+    const updateProgress = () => {
+      const max = scroll.scrollWidth - scroll.clientWidth;
+      const pct = max > 0 ? (scroll.scrollLeft / max) * 100 : 0;
+      if (progress instanceof HTMLElement) progress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
+    };
+    scroll.addEventListener('scroll', updateProgress, { passive: true });
+    updateProgress();
+  });
+</script>
