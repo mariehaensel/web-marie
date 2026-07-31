@@ -947,11 +947,10 @@ footer.site-footer {
   .vita-section.fullscreen-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: calc(100vh - 48px);
+    grid-template-rows: 100vh;
     gap: 0;
     align-content: stretch;
     align-items: stretch;
-    padding-top: 48px;
   }
 
   .vita-section.fullscreen-section .vita-photo {
