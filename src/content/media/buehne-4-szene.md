@@ -1,6 +1,6 @@
 ---
-title: "Bühnenszene"
-image: "/images/uploads/buehne-szene-1.jpg"
-caption: "Bühnenszene"
-category: "buehne"
+title: Das schlaue Füchslein
+image: /images/uploads/buehne-szene-1.jpg
+caption: Das schlaue Füchslein
+category: buehne
 ---
