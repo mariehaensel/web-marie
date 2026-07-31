@@ -1,6 +1,6 @@
 ---
 phone: "+49 000 00000000"
-email: "kontakt@marie-haensel.de"
+email: "post@marie-haensel.de"
 instagram: "https://instagram.com/beispiel"
 ---
 

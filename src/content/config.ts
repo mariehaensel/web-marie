@@ -38,6 +38,8 @@ const media = defineCollection({
     image: z.string(),
     caption: z.string().optional(),
     videoUrl: z.string().optional(),
+    category: z.enum(['buehne', 'portrait', 'video']).optional(),
+    credit: z.string().optional(),
   }),
 });
 

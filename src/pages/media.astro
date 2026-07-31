@@ -2,25 +2,79 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
-const items = await getCollection('media');
+const all = await getCollection('media');
+const videos = all.filter(item => item.data.category === 'video');
+const buehne = all.filter(item => item.data.category === 'buehne');
+const portraits = all.filter(item => item.data.category === 'portrait');
+const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.data.category ?? ''));
 ---
 <Layout title="Media" description="Audio, Video und Bildergalerie von Marie Hänsel">
   <h1 class="page-title">Media</h1>
-  <div class="media-grid">
-    {items.map(item => (
-      item.data.videoUrl ? (
+
+  {videos.length > 0 && (
+    <h2 class="media-group-heading">Mitschnitte</h2>
+  )}
+  {videos.length > 0 && (
+    <div class="media-grid">
+      {videos.map(item => (
         <a class="media-tile-grid" href={item.data.videoUrl} target="_blank" rel="noopener">
           <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           <span class="media-play" aria-hidden="true">▶</span>
           {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
+          {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
         </a>
-      ) : (
+      ))}
+    </div>
+  )}
+
+  {buehne.length > 0 && (
+    <h2 class="media-group-heading">Bühnenfotos</h2>
+  )}
+  {buehne.length > 0 && (
+    <div class="media-grid">
+      {buehne.map(item => (
         <figure>
           <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
+          {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
         </figure>
-      )
-    ))}
-  </div>
+      ))}
+    </div>
+  )}
+
+  {portraits.length > 0 && (
+    <h2 class="media-group-heading">Portraits</h2>
+  )}
+  {portraits.length > 0 && (
+    <div class="media-grid">
+      {portraits.map(item => (
+        <figure>
+          <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
+          {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
+        </figure>
+      ))}
+    </div>
+  )}
+
+  {rest.length > 0 && (
+    <div class="media-grid">
+      {rest.map(item => (
+        item.data.videoUrl ? (
+          <a class="media-tile-grid" href={item.data.videoUrl} target="_blank" rel="noopener">
+            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            <span class="media-play" aria-hidden="true">▶</span>
+            {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
+          </a>
+        ) : (
+          <figure>
+            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
+          </figure>
+        )
+      ))}
+    </div>
+  )}
+
   <p style="margin-top:2rem;"><a href="https://instagram.com" target="_blank" rel="noopener">Weitere Bilder auf Instagram →</a></p>
 </Layout>

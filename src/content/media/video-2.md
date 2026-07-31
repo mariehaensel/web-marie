@@ -1,6 +1,7 @@
 ---
 title: "Video 2"
-image: "/images/uploads/platzhalter.svg"
+image: "https://img.youtube.com/vi/v347o-NCmuw/hqdefault.jpg"
 caption: "Konzertmitschnitt"
 videoUrl: "https://www.youtube.com/watch?v=v347o-NCmuw"
+category: "video"
 ---

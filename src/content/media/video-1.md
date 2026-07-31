@@ -1,6 +1,7 @@
 ---
 title: "Video 1"
-image: "/images/uploads/platzhalter.svg"
+image: "https://img.youtube.com/vi/DeUq7QlhSPw/hqdefault.jpg"
 caption: "Konzertmitschnitt"
 videoUrl: "https://youtu.be/DeUq7QlhSPw?si=UqWrL2uY8npCdjVF&t=115"
+category: "video"
 ---

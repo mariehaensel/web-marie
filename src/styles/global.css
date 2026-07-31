@@ -198,7 +198,7 @@ header.site-header.header-overlay.scrolled .site-subtitle-header { color: var(--
   transform: translateX(100%) scale(0.97);
   transform-origin: right center;
   pointer-events: none;
-  transition: transform 0.55s cubic-bezier(0.34, 1.4, 0.4, 1), opacity 0.4s ease;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
   z-index: 22;
 }
 
@@ -212,27 +212,12 @@ header.site-header.header-overlay.scrolled .site-subtitle-header { color: var(--
   list-style: none;
   margin: 0;
   padding: 0;
-  counter-reset: navcount;
 }
 
 .nav-panel li {
-  counter-increment: navcount;
   border-bottom: 1px solid rgba(16, 17, 20, 0.1);
 }
 .nav-panel li:first-child { border-top: 1px solid rgba(16, 17, 20, 0.1); }
-
-.nav-panel li::before {
-  content: counter(navcount, decimal-leading-zero);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--accent);
-  opacity: 0.65;
-  letter-spacing: 0.04em;
-  margin-right: 0.85rem;
-  font-variant-numeric: tabular-nums;
-}
 
 .nav-panel a {
   display: inline-flex;
@@ -410,10 +395,132 @@ h1.page-title, h2.page-title {
   font-style: italic;
 }
 
+/* Agenda archive (vergangene Termine) */
+.agenda-archive {
+  margin-top: 4rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.agenda-archive-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.4rem;
+  color: var(--muted);
+  margin: 0 0 1rem;
+}
+
+.agenda-archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agenda-archive-row {
+  border-bottom: 1px solid var(--line);
+  font-size: 0.92rem;
+}
+
+.agenda-archive-row summary,
+.agenda-archive-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.75rem 0;
+  color: var(--muted);
+  cursor: default;
+}
+
+.agenda-archive-row summary {
+  cursor: pointer;
+  list-style: none;
+}
+.agenda-archive-row summary::-webkit-details-marker { display: none; }
+
+.agenda-archive-row summary::after {
+  content: "+";
+  margin-left: auto;
+  color: var(--muted);
+  opacity: 0.6;
+}
+.agenda-archive-row details[open] summary::after { content: "–"; }
+
+.agenda-archive-row time {
+  flex: 0 0 auto;
+  width: 110px;
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+}
+
+.agenda-archive-piece {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.agenda-archive-venue {
+  color: var(--muted);
+}
+
+.agenda-archive-details {
+  margin: 0 0 0.85rem 110px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.agenda-archive-year {
+  border-bottom: 1px solid var(--line);
+}
+.agenda-archive-year .agenda-archive-list { border-top: none; }
+.agenda-archive-year .agenda-archive-row:last-child { border-bottom: none; }
+
+.agenda-archive-year-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+.agenda-archive-year-summary::-webkit-details-marker { display: none; }
+
+.agenda-archive-year-summary::after {
+  content: "+";
+  margin-left: auto;
+  color: var(--muted);
+  font-family: sans-serif;
+}
+.agenda-archive-year[open] .agenda-archive-year-summary::after { content: "–"; }
+
+.agenda-archive-year-count {
+  font-family: var(--font-body, inherit);
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+@media (max-width: 600px) {
+  .agenda-archive-row summary,
+  .agenda-archive-summary {
+    flex-wrap: wrap;
+    gap: 0.25rem 1rem;
+  }
+  .agenda-archive-details { margin-left: 0; }
+}
+
 .media-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.media-group-heading {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 1.6rem;
+  margin: 0 0 1.25rem;
 }
 
 .media-grid figure { margin: 0; }
@@ -572,6 +679,35 @@ a.media-tile:hover { text-decoration: none; }
   color: var(--muted);
 }
 
+.media-credit {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+.media-group-label {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  letter-spacing: 0.02em;
+  color: var(--muted);
+  border-left: 1px solid var(--line);
+  padding-left: 0.75rem;
+}
+
+.media-group-label:first-child {
+  border-left: none;
+  padding-left: 0;
+}
+
 /* Contact form */
 .contact-form {
   display: flex;
@@ -653,13 +789,13 @@ a.media-tile:hover { text-decoration: none; }
   object-fit: cover;
   object-position: 78% center;
   display: block;
-  filter: contrast(1.18) saturate(1.05) brightness(0.85);
+  filter: contrast(1.18) saturate(1.05) brightness(0.92);
 }
 
 .kontakt-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(16, 17, 20, 0.55) 0%, rgba(16, 17, 20, 0.42) 40%, rgba(16, 17, 20, 0.15) 75%);
+  background: linear-gradient(100deg, rgba(16, 17, 20, 0.4) 0%, rgba(16, 17, 20, 0.3) 40%, rgba(16, 17, 20, 0.1) 75%);
 }
 
 .kontakt-section .container {
@@ -800,9 +936,11 @@ footer.site-footer {
   .vita-section.fullscreen-section {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 100vh;
+    grid-template-rows: calc(100vh - 132px);
     gap: 0;
     align-content: stretch;
+    align-items: stretch;
+    padding-top: 132px;
   }
 
   .vita-section.fullscreen-section .vita-photo {
@@ -836,6 +974,11 @@ footer.site-footer {
   .media-section.fullscreen-section .section-link { color: var(--accent-light); }
   .media-section.fullscreen-section .media-tile img { border-color: rgba(255, 255, 255, 0.15); }
   .media-section.fullscreen-section .media-caption { color: rgba(255, 255, 255, 0.6); }
+  .media-section.fullscreen-section .media-credit { color: rgba(255, 255, 255, 0.4); }
+  .media-section.fullscreen-section .media-group-label {
+    color: rgba(255, 255, 255, 0.55);
+    border-left-color: rgba(255, 255, 255, 0.15);
+  }
   .media-section.fullscreen-section .media-tile,
   .media-section.fullscreen-section .media-tile img {
     width: 280px;

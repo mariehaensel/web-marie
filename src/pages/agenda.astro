@@ -1,9 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AgendaArchiveRow from '../components/AgendaArchiveRow.astro';
 import { getCollection } from 'astro:content';
 
-const agenda = (await getCollection('agenda'))
+const all = await getCollection('agenda');
+const today = new Date(new Date().toDateString());
+const currentYear = today.getFullYear();
+
+const upcoming = all
+  .filter(e => e.data.date >= today)
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+const past = all
+  .filter(e => e.data.date < today)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const pastRecent = past.filter(e => e.data.date.getFullYear() === currentYear);
+
+const pastByYear = new Map<number, typeof past>();
+for (const entry of past) {
+  const year = entry.data.date.getFullYear();
+  if (year === currentYear) continue;
+  if (!pastByYear.has(year)) pastByYear.set(year, []);
+  pastByYear.get(year)!.push(entry);
+}
+const pastYears = Array.from(pastByYear.keys()).sort((a, b) => b - a);
 
 const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
@@ -11,9 +32,9 @@ const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
 ---
 <Layout title="Agenda" description="Konzert- und Opern-Termine von Marie Hänsel">
   <h1 class="page-title reveal">Agenda</h1>
-  {agenda.length === 0 && <p class="agenda-empty">Aktuell sind keine Termine hinterlegt.</p>}
+  {upcoming.length === 0 && <p class="agenda-empty">Aktuell sind keine Termine hinterlegt.</p>}
   <div class="agenda-list">
-    {agenda.map((entry, i) => (
+    {upcoming.map((entry, i) => (
       <div class="agenda-entry reveal" style={`transition-delay:${Math.min(i, 6) * 90}ms`}>
         <div class="agenda-date-block">
           <span class="agenda-day">{dayFormatter.format(entry.data.date)}</span>
@@ -31,4 +52,28 @@ const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
       </div>
     ))}
   </div>
+
+  {past.length > 0 && (
+    <div class="agenda-archive">
+      <h2 class="agenda-archive-heading">Vergangene Termine</h2>
+
+      {pastRecent.length > 0 && (
+        <ul class="agenda-archive-list">
+          {pastRecent.map(entry => <AgendaArchiveRow entry={entry} />)}
+        </ul>
+      )}
+
+      {pastYears.map(year => (
+        <details class="agenda-archive-year">
+          <summary class="agenda-archive-year-summary">
+            <span>{year}</span>
+            <span class="agenda-archive-year-count">{pastByYear.get(year)!.length} Termine</span>
+          </summary>
+          <ul class="agenda-archive-list">
+            {pastByYear.get(year)!.map(entry => <AgendaArchiveRow entry={entry} />)}
+          </ul>
+        </details>
+      ))}
+    </div>
+  )}
 </Layout>

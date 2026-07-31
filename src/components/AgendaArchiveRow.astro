@@ -1,0 +1,29 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  entry: CollectionEntry<'agenda'>;
+}
+const { entry } = Astro.props;
+
+const compactFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit', month: 'short', year: 'numeric' });
+const details = [entry.data.composer, entry.data.colleagues, entry.data.ensemble].filter(Boolean).join(' · ');
+---
+<li class="agenda-archive-row">
+  {details ? (
+    <details>
+      <summary>
+        <time datetime={entry.data.date.toISOString().slice(0, 10)}>{compactFormatter.format(entry.data.date)}</time>
+        <span class="agenda-archive-piece">{entry.data.piece}</span>
+        {entry.data.venue && <span class="agenda-archive-venue">{entry.data.venue}</span>}
+      </summary>
+      <p class="agenda-archive-details">{details}</p>
+    </details>
+  ) : (
+    <div class="agenda-archive-summary">
+      <time datetime={entry.data.date.toISOString().slice(0, 10)}>{compactFormatter.format(entry.data.date)}</time>
+      <span class="agenda-archive-piece">{entry.data.piece}</span>
+      {entry.data.venue && <span class="agenda-archive-venue">{entry.data.venue}</span>}
+    </div>
+  )}
+</li>
