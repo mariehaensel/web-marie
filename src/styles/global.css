@@ -856,25 +856,15 @@ a.media-tile:hover { text-decoration: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 62% 30%;
+  object-position: 78% 28%;
   display: block;
-  filter: contrast(1.1) saturate(1.02) brightness(0.94);
+  filter: contrast(1.18) saturate(1.05) brightness(0.92);
 }
 
 .kontakt-scrim {
   position: absolute;
   inset: 0;
   background: linear-gradient(100deg, rgba(16, 17, 20, 0.4) 0%, rgba(16, 17, 20, 0.3) 40%, rgba(16, 17, 20, 0.1) 75%);
-}
-
-.kontakt-credit {
-  position: absolute;
-  z-index: 1;
-  right: clamp(1.25rem, 5vw, 3.5rem);
-  bottom: 1.25rem;
-  margin: 0;
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.55);
 }
 
 .kontakt-section .container {
