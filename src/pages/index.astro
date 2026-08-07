@@ -3,13 +3,14 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import VitaSection from '../components/VitaSection.astro';
 import MediaSection from '../components/MediaSection.astro';
-import ContactForm from '../components/ContactForm.astro';
 import { getCollection } from 'astro:content';
 
 const agenda = (await getCollection('agenda'))
   .filter(e => e.data.date >= new Date(new Date().toDateString()))
   .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf())
   .slice(0, 3);
+
+const [kontakt] = await getCollection('kontakt');
 
 const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
@@ -46,14 +47,16 @@ const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
 
   <MediaSection />
 
-  <section class="fullscreen-section home-section kontakt-section">
+  <section class="fullscreen-section home-section kontakt-section kontakt-teaser">
     <div class="kontakt-bg" aria-hidden="true">
       <img src="/images/uploads/kontakt-bg.jpg" alt="" loading="lazy" />
-      <div class="kontakt-scrim"></div>
     </div>
-    <div class="container">
-      <h2 class="section-heading">Kontakt</h2>
-      <ContactForm />
+    <div class="kontakt-scrim" aria-hidden="true"></div>
+    <h2 class="section-heading kontakt-teaser-heading">Kontakt</h2>
+    <div class="kontakt-cta-row">
+      <a class="kontakt-cta kontakt-cta-primary" href="/kontakt">Kontaktformular</a>
+      {kontakt?.data.email && <a class="kontakt-cta" href={`mailto:${kontakt.data.email}`}>E-Mail</a>}
+      {kontakt?.data.instagram && <a class="kontakt-cta" href={kontakt.data.instagram} target="_blank" rel="noopener">Instagram</a>}
     </div>
   </section>
 </Layout>

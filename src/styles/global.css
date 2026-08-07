@@ -260,14 +260,6 @@ main:has(.fullscreen-section) { padding-bottom: 0; }
   padding-top: 0;
 }
 
-/* Kontakt's heading sits directly at the top of its section (no photo
-   above it to push it down first), so it still needs real clearance from
-   the fixed header — just not the full generic 168px meant for standalone
-   pages, since Kontakt's own centered/fullscreen layout already adds some. */
-.kontakt-section .container {
-  padding-top: calc(1rem + var(--header-h));
-}
-
 h1.page-title, h2.page-title {
   font-size: 1.7rem;
   font-weight: 800;
@@ -840,10 +832,25 @@ a.media-tile:hover { text-decoration: none; }
   white-space: nowrap;
 }
 
-/* Kontakt section background photo */
-.kontakt-section {
-  min-height: 640px;
+/* Kontakt teaser: full-bleed photo with heading + CTA buttons overlaid,
+   linking out to the real form on /kontakt instead of embedding it —
+   keeps this section a simple photo moment like the rest of the
+   homepage, and sidesteps ever needing the photo to share space with a
+   tall form (which is what forced the extreme mobile crop before). */
+.kontakt-teaser {
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  padding: 3rem 1.5rem;
+  overflow: hidden;
+  min-height: 480px;
   color: #fff;
+  text-align: center;
 }
 
 .kontakt-bg {
@@ -856,49 +863,69 @@ a.media-tile:hover { text-decoration: none; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 78% 28%;
+  object-position: 78% 22%;
   display: block;
-  filter: contrast(1.18) saturate(1.05) brightness(0.92);
+  filter: contrast(1.18) saturate(1.05) brightness(0.85);
 }
 
 .kontakt-scrim {
   position: absolute;
   inset: 0;
-  background: linear-gradient(100deg, rgba(16, 17, 20, 0.4) 0%, rgba(16, 17, 20, 0.3) 40%, rgba(16, 17, 20, 0.1) 75%);
+  z-index: 0;
+  background: rgba(16, 17, 20, 0.4);
 }
 
-.kontakt-section .container {
-  max-width: 680px;
+.kontakt-teaser-heading {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
   margin: 0;
-  padding-left: max(1.5rem, calc((100vw - 960px) / 2 + 1.5rem));
 }
 
-.kontakt-section .section-heading { color: #fff; }
-.kontakt-section .contact-form label { color: rgba(255, 255, 255, 0.85); }
-.kontakt-section .contact-form-note { color: rgba(255, 255, 255, 0.65); }
+.kontakt-cta-row {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
 
-/* Mobile: the section is much taller (narrow column) than wide, which
-   forced object-fit:cover into an extreme, over-zoomed crop of the photo
-   at any object-position. Give the photo its own short band instead of
-   stretching it across the whole section, so it needs far less zoom to
-   fill the frame and shows her whole face instead of a tight detail. */
-@media (max-width: 899px) {
-  .kontakt-section {
-    background: var(--ink);
-  }
-  .kontakt-bg {
-    position: relative;
-    inset: auto;
-    aspect-ratio: 1 / 1;
+@media (min-width: 640px) {
+  .kontakt-cta-row {
+    flex-direction: row;
+    gap: 1.25rem;
   }
 }
 
-.kontakt-section .contact-form button {
-  background: #fff;
+.kontakt-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 2rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  color: #fff;
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  backdrop-filter: blur(4px);
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.kontakt-cta:hover {
+  background: rgba(255, 255, 255, 0.15);
   border-color: #fff;
-  color: var(--ink);
+  text-decoration: none;
+  color: #fff;
 }
-.kontakt-section .contact-form button:hover {
+
+.kontakt-cta-primary {
+  background: #fff;
+  color: var(--ink);
+  border-color: #fff;
+}
+.kontakt-cta-primary:hover {
   background: transparent;
   color: #fff;
 }
