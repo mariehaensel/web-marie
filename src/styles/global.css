@@ -3,8 +3,8 @@
   --paper: #f5f4f0;
   --paper-raised: #ffffff;
   --line: #e0ded6;
-  --accent: #9c7a3c;
-  --accent-light: #d8b878;
+  --accent: #941919;
+  --accent-light: #c96b6b;
   --muted: #63666d;
   --max-width: 960px;
   --header-h: 120px;
@@ -560,8 +560,23 @@ h1.page-title, h2.page-title {
 }
 
 .section-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
   margin-top: 1.5rem;
+  padding: 0.55rem 1.5rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  transition: background 0.2s ease;
+}
+.section-link:hover {
+  background: var(--accent-light);
+  color: #fff;
+  text-decoration: none;
 }
 
 .section-heading {
@@ -903,12 +918,13 @@ a.media-tile:hover { text-decoration: none; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.9rem 2rem;
+  padding: 0.55rem 1.65rem;
   border-radius: 999px;
   border: 1px solid rgba(255, 255, 255, 0.7);
   color: #fff;
-  font-size: 0.95rem;
-  letter-spacing: 0.01em;
+  font-size: 0.88rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
   white-space: nowrap;
   backdrop-filter: blur(4px);
   transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
@@ -921,13 +937,14 @@ a.media-tile:hover { text-decoration: none; }
 }
 
 .kontakt-cta-primary {
-  background: #fff;
-  color: var(--ink);
-  border-color: #fff;
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
 }
 .kontakt-cta-primary:hover {
   background: transparent;
   color: #fff;
+  border-color: var(--accent-light);
 }
 
 /* Footer */
@@ -1095,7 +1112,6 @@ footer.site-footer {
   }
   .media-section.fullscreen-section .section-heading { color: #fff; }
   .media-section.fullscreen-section .section-watermark { color: #fff; opacity: 0.04; }
-  .media-section.fullscreen-section .section-link { color: var(--accent-light); }
   .media-section.fullscreen-section .media-tile img { border-color: rgba(255, 255, 255, 0.15); }
   .media-section.fullscreen-section .media-caption { color: rgba(255, 255, 255, 0.6); }
   .media-section.fullscreen-section .media-credit { color: rgba(255, 255, 255, 0.4); }
