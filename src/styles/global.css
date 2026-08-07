@@ -877,6 +877,22 @@ a.media-tile:hover { text-decoration: none; }
 .kontakt-section .contact-form label { color: rgba(255, 255, 255, 0.85); }
 .kontakt-section .contact-form-note { color: rgba(255, 255, 255, 0.65); }
 
+/* Mobile: the section is much taller (narrow column) than wide, which
+   forced object-fit:cover into an extreme, over-zoomed crop of the photo
+   at any object-position. Give the photo its own short band instead of
+   stretching it across the whole section, so it needs far less zoom to
+   fill the frame and shows her whole face instead of a tight detail. */
+@media (max-width: 899px) {
+  .kontakt-section {
+    background: var(--ink);
+  }
+  .kontakt-bg {
+    position: relative;
+    inset: auto;
+    aspect-ratio: 1 / 1;
+  }
+}
+
 .kontakt-section .contact-form button {
   background: #fff;
   border-color: #fff;
