@@ -636,6 +636,23 @@ h1.page-title, h2.page-title {
   }
 }
 
+/* Standalone /vita page: give the photo column real presence instead of
+   the small 340px-capped square it used to be, matching the bolder
+   full-height treatment the homepage teaser already gets. */
+@media (min-width: 900px) {
+  .vita-section:not(.fullscreen-section) {
+    grid-template-columns: minmax(380px, 1fr) 1.3fr;
+    align-items: stretch;
+  }
+
+  .vita-section:not(.fullscreen-section) .vita-photo img {
+    width: 100%;
+    height: 100%;
+    min-height: 560px;
+    object-fit: cover;
+  }
+}
+
 /* Media / Audio / Video section */
 .media-scroll-wrap {
   position: relative;
