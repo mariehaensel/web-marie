@@ -55,8 +55,10 @@ const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
     <h2 class="section-heading kontakt-teaser-heading">Kontakt</h2>
     <div class="kontakt-cta-row">
       <a class="kontakt-cta kontakt-cta-primary" href="/kontakt">Kontaktformular</a>
-      {kontakt?.data.email && <a class="kontakt-cta" href={`mailto:${kontakt.data.email}`}>E-Mail</a>}
-      {kontakt?.data.instagram && <a class="kontakt-cta" href={kontakt.data.instagram} target="_blank" rel="noopener">Instagram</a>}
+      <div class="kontakt-cta-secondary-row">
+        {kontakt?.data.email && <a class="kontakt-cta" href={`mailto:${kontakt.data.email}`}>E-Mail</a>}
+        {kontakt?.data.instagram && <a class="kontakt-cta" href={kontakt.data.instagram} target="_blank" rel="noopener">Instagram</a>}
+      </div>
     </div>
   </section>
 </Layout>
