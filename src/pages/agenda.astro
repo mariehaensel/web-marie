@@ -43,7 +43,7 @@ const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
         </div>
         <div>
           <p class="agenda-piece">{entry.data.piece}</p>
-          {entry.data.composer && <p class="agenda-meta">{entry.data.composer}</p>}
+          {entry.data.composer && <p class="agenda-composer">{entry.data.composer}</p>}
           {entry.data.colleagues && <p class="agenda-meta">{entry.data.colleagues}</p>}
           {entry.data.ensemble && <p class="agenda-meta">{entry.data.ensemble}</p>}
           {entry.data.venue && <p class="agenda-meta">{entry.data.venue}</p>}
