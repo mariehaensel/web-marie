@@ -983,8 +983,8 @@ footer.site-footer {
 
 .footer-email {
   display: block;
-  font-size: 1.5rem;
-  font-weight: 700;
+  font-size: 1.05rem;
+  font-weight: 600;
   color: #f5f4f0;
 }
 .footer-email:hover { color: var(--accent-light); text-decoration: none; }
