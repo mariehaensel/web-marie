@@ -1032,6 +1032,29 @@ footer.site-footer {
     transform: none;
     object-position: 68% top;
   }
+
+  /* Footer: stack everything left-aligned instead of the desktop's
+     side-by-side + right-aligned meta block, which just left the
+     copyright/legal line looking randomly centered once it wrapped
+     onto its own row on narrow screens. */
+  .site-footer .footer-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2.25rem;
+  }
+  .footer-contact-row {
+    flex-direction: column;
+    gap: 1.75rem;
+  }
+  .footer-meta {
+    width: 100%;
+    text-align: left;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  .footer-meta ul {
+    justify-content: flex-start;
+  }
 }
 
 
