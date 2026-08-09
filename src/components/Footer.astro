@@ -10,27 +10,17 @@ const year = new Date().getFullYear();
         <p class="footer-kicker">Kontakt</p>
         {kontakt?.data.email && <a class="footer-email" href={`mailto:${kontakt.data.email}`}>{kontakt.data.email}</a>}
       </div>
-      {(kontakt?.data.instagram || kontakt?.data.whatsapp) && (
+      {kontakt?.data.instagram && (
         <div>
           <p class="footer-kicker">Socials</p>
           <div class="footer-social-icons">
-            {kontakt?.data.instagram && (
-              <a class="footer-social" href={kontakt.data.instagram} target="_blank" rel="noopener" aria-label="Instagram">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
-                  <rect x="3" y="3" width="18" height="18" rx="5.5"></rect>
-                  <circle cx="12" cy="12" r="4.2"></circle>
-                  <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"></circle>
-                </svg>
-              </a>
-            )}
-            {kontakt?.data.whatsapp && (
-              <a class="footer-social" href={`https://wa.me/${kontakt.data.whatsapp}`} target="_blank" rel="noopener" aria-label="WhatsApp">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
-                  <path d="M4 20l1.4-4.2A8 8 0 1 1 8.6 19L4 20z"></path>
-                  <path d="M8.5 10.2c.4 2.6 2.4 4.6 5 5" stroke-linecap="round"></path>
-                </svg>
-              </a>
-            )}
+            <a class="footer-social" href={kontakt.data.instagram} target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7">
+                <rect x="3" y="3" width="18" height="18" rx="5.5"></rect>
+                <circle cx="12" cy="12" r="4.2"></circle>
+                <circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"></circle>
+              </svg>
+            </a>
           </div>
         </div>
       )}

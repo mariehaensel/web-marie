@@ -32,7 +32,13 @@ collections:
     sortable_fields: ["date"]
     fields:
       - { label: "Interner Titel (für Dateiname, z.B. bach-weihnachtsoratorium)", name: "slug", widget: "string" }
-      - { label: "Datum", name: "date", widget: "date", format: "YYYY-MM-DD" }
+      - label: "Datum"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        picker_utc: true
       - { label: "Uhrzeit", name: "time", widget: "string", required: false, hint: "z. B. 19:30 Uhr" }
       - { label: "Werk / Programm", name: "piece", widget: "string" }
       - { label: "Komponist", name: "composer", widget: "string", required: false }
