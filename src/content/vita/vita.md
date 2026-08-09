@@ -1,6 +1,7 @@
 ---
 title: "Vita"
 excerpt: "Marie Hänsel studierte in Karlsruhe, Dresden und Hannover und war von 2019 bis 2024 festes Ensemblemitglied des Opernhauses Chemnitz, wo sie u. a. als Pamina, Gretel und Blonde zu erleben war. 2020 wurde sie mit dem Beethoven-Kammermusikpreis ausgezeichnet, 2023 erreichte sie das Finale des internationalen Wettbewerbs DAS LIED in Heidelberg."
+photo: "/images/uploads/vita-portrait.jpg"
 ---
 
 Marie Hänsel wuchs in einer lebendigen Großfamilie auf und studierte in Karlsruhe und Dresden sowie bei Prof. Charlotte Lehmann in Hannover.

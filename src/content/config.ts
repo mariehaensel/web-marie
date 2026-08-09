@@ -19,16 +19,16 @@ const vita = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     excerpt: z.string().optional(),
+    photo: z.string(),
   }),
 });
 
 const kontakt = defineCollection({
   type: 'content',
   schema: z.object({
-    phone: z.string().optional(),
     email: z.string(),
     instagram: z.string().optional(),
-    whatsapp: z.string().optional(),
+    backgroundImage: z.string(),
   }),
 });
 
@@ -52,4 +52,7 @@ const home = defineCollection({
   }),
 });
 
-export const collections = { agenda, vita, kontakt, media, home };
+const impressum = defineCollection({ type: 'content', schema: z.object({}) });
+const datenschutz = defineCollection({ type: 'content', schema: z.object({}) });
+
+export const collections = { agenda, vita, kontakt, media, home, impressum, datenschutz };

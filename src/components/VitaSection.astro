@@ -5,7 +5,7 @@ const [entry] = await getCollection('vita');
 ---
 <section class="fullscreen-section vita-section">
   <div class="vita-photo">
-    <img src="/images/uploads/vita-portrait.jpg" alt="Portrait von Marie Hänsel" loading="lazy" />
+    <img src={entry?.data.photo} alt="Portrait von Marie Hänsel" loading="lazy" />
   </div>
   <div class="vita-text container">
     <h2 class="section-heading">Vita</h2>

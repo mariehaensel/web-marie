@@ -49,7 +49,7 @@ const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
 
   <section class="fullscreen-section home-section kontakt-section kontakt-teaser">
     <div class="kontakt-bg" aria-hidden="true">
-      <img src="/images/uploads/kontakt-bg.jpg" alt="" loading="lazy" />
+      <img src={kontakt?.data.backgroundImage} alt="" loading="lazy" />
     </div>
     <div class="kontakt-scrim" aria-hidden="true"></div>
     <h2 class="section-heading kontakt-teaser-heading">Kontakt</h2>

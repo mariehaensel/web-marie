@@ -8,7 +8,7 @@ const { Content } = vitaEntry ? await render(vitaEntry) : { Content: null };
 <Layout title="Vita">
   <div class="vita-section">
     <div class="vita-photo">
-      <img src="/images/uploads/vita-portrait.jpg" alt="Portrait von Marie Hänsel" loading="lazy" />
+      <img src={vitaEntry?.data.photo} alt="Portrait von Marie Hänsel" loading="lazy" />
     </div>
     <div class="vita-text">
       <h1 class="page-title">Vita</h1>
