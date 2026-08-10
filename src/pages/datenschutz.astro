@@ -5,7 +5,7 @@ import { getCollection, render } from 'astro:content';
 const [entry] = await getCollection('datenschutz');
 const { Content } = entry ? await render(entry) : { Content: null };
 ---
-<Layout title="Datenschutz">
+<Layout title="Datenschutz" description="Datenschutzerklärung der Website von Sopranistin Marie Hänsel.">
   <h1 class="page-title">Datenschutzerklärung</h1>
   <div class="legal-page">
     {Content && <Content />}

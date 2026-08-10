@@ -5,7 +5,7 @@ import { getCollection, render } from 'astro:content';
 const [entry] = await getCollection('impressum');
 const { Content } = entry ? await render(entry) : { Content: null };
 ---
-<Layout title="Impressum">
+<Layout title="Impressum" description="Impressum der Website von Sopranistin Marie Hänsel.">
   <h1 class="page-title">Impressum</h1>
   <div class="legal-page">
     {Content && <Content />}

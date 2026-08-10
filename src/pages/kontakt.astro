@@ -6,7 +6,7 @@ import { getCollection, render } from 'astro:content';
 const [entry] = await getCollection('kontakt');
 const { Content } = entry ? await render(entry) : { Content: null };
 ---
-<Layout title="Kontakt">
+<Layout title="Kontakt" description="Kontakt zu Sopranistin Marie Hänsel für Booking-Anfragen, Presse und weitere Fragen.">
   <h1 class="page-title">Kontakt</h1>
   <ContactForm />
   {Content && <div style="margin-top:1.5rem;"><Content /></div>}
