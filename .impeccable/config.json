@@ -1,0 +1,17 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "side-tab",
+        "value": "*",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-08-10T06:18:36.904Z",
+        "reason": "User explicitly designed and approved the red accent border on the Agenda date block across multiple iterations this session"
+      }
+    ]
+  }
+}
