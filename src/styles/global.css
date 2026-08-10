@@ -128,7 +128,6 @@ header.site-header.header-overlay.scrolled .site-subtitle-header { color: var(--
 
 @media (prefers-reduced-motion: reduce) {
   .site-title, .site-subtitle-header { animation: none; }
-  .hero-media img { animation: none; transform: scale(var(--hero-scale)); filter: contrast(1.22) saturate(1.1) brightness(0.94); }
 }
 
 /* Burger nav */
@@ -299,25 +298,14 @@ h1.page-title, h2.page-title {
 }
 
 .hero-media img {
-  --hero-scale: 1.25;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
+  transform: scale(1.25);
   transform-origin: 80% 15%;
-  animation: hero-entrance 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-@keyframes hero-entrance {
-  from {
-    transform: scale(calc(var(--hero-scale) * 1.072));
-    filter: contrast(1.22) saturate(1.1) brightness(0.94) blur(14px);
-  }
-  to {
-    transform: scale(var(--hero-scale));
-    filter: contrast(1.22) saturate(1.1) brightness(0.94) blur(0);
-  }
+  filter: contrast(1.22) saturate(1.1) brightness(0.94);
 }
 
 .hero-scrim-top {
@@ -1076,7 +1064,7 @@ footer.site-footer {
     min-height: 460px;
   }
   .hero-media img {
-    --hero-scale: 1;
+    transform: none;
     object-position: 68% top;
   }
 
