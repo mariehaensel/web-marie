@@ -33,11 +33,9 @@ collections:
       - { label: "Interner Titel (für Dateiname, z.B. bach-weihnachtsoratorium)", name: "slug", widget: "string" }
       - label: "Datum"
         name: "date"
-        widget: "datetime"
-        format: "YYYY-MM-DD"
-        date_format: "YYYY-MM-DD"
-        time_format: false
-        picker_utc: true
+        widget: "string"
+        hint: "Format: JJJJ-MM-TT, z. B. 2026-09-13. Bitte genau so eintippen (der Kalender-Picker hat einen bekannten Fehler beim Tippen)."
+        pattern: ['^\d{4}-\d{2}-\d{2}$', "Bitte im Format JJJJ-MM-TT eingeben, z. B. 2026-09-13"]
       - { label: "Uhrzeit", name: "time", widget: "string", required: false, hint: "z. B. 19:30 Uhr" }
       - { label: "Werk / Programm", name: "piece", widget: "string" }
       - { label: "Komponist", name: "composer", widget: "string", required: false }

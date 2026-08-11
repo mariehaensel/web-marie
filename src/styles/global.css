@@ -391,12 +391,44 @@ h1.page-title, h2.page-title {
   opacity: 0.75;
   font-size: 0.98rem;
   margin: 0 0 0.4rem;
+  white-space: pre-line;
 }
 
 .agenda-meta {
   color: var(--muted);
   font-size: 0.88rem;
   margin: 0.15rem 0;
+  white-space: pre-line;
+}
+
+.agenda-preview-summary {
+  cursor: pointer;
+  list-style: none;
+}
+.agenda-preview-summary::-webkit-details-marker { display: none; }
+
+.agenda-preview-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  margin-top: 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+.agenda-preview-toggle::after {
+  content: "+";
+  font-size: 1rem;
+  line-height: 1;
+}
+.agenda-preview-details[open] .agenda-preview-toggle::after { content: "–"; }
+
+.agenda-preview-more {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--line);
 }
 
 .agenda-empty {
