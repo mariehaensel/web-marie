@@ -49,10 +49,10 @@ const personJsonLd = {
                 <summary class="agenda-preview-summary">
                   <p class="agenda-piece">{entry.data.piece}</p>
                   {entry.data.composer && <p class="agenda-composer">{entry.data.composer}</p>}
+                  {entry.data.venue && <p class="agenda-meta">{entry.data.venue}</p>}
                   <span class="agenda-preview-toggle">Details</span>
                 </summary>
                 <div class="agenda-preview-more">
-                  {entry.data.venue && <p class="agenda-meta">{entry.data.venue}</p>}
                   {entry.data.colleagues && <p class="agenda-meta">{entry.data.colleagues}</p>}
                   {entry.data.ensemble && <p class="agenda-meta">{entry.data.ensemble}</p>}
                 </div>

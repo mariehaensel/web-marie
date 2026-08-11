@@ -382,13 +382,12 @@ h1.page-title, h2.page-title {
 .agenda-piece {
   font-size: 1.1rem;
   font-weight: 700;
-  margin: 0 0 0.3rem;
+  margin: 0 0 0.15rem;
 }
 
 .agenda-composer {
   font-weight: 600;
   color: var(--ink);
-  opacity: 0.75;
   font-size: 0.98rem;
   margin: 0 0 0.4rem;
   white-space: pre-line;
