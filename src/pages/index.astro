@@ -15,8 +15,20 @@ const [kontakt] = await getCollection('kontakt');
 const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
 const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
+
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Marie Hänsel',
+  jobTitle: 'Sopranistin',
+  url: 'https://marie-haensel.de/',
+  image: 'https://marie-haensel.de/images/uploads/hero-portrait-3.jpg',
+  description: 'Sopranistin mit Schwerpunkt Oper, Konzert und Lied.',
+  ...(kontakt?.data.instagram ? { sameAs: [kontakt.data.instagram] } : {}),
+};
 ---
 <Layout title="Startseite" hero={true} description="Marie Hänsel, Sopranistin — Konzerte, Opernpartien und Liederabende. Agenda, Vita, Media und Kontakt.">
+  <script type="application/ld+json" set:html={JSON.stringify(personJsonLd)} />
   <Hero />
 
   <section class="fullscreen-section home-section">

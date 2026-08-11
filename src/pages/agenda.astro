@@ -29,8 +29,23 @@ const pastYears = Array.from(pastByYear.keys()).sort((a, b) => b - a);
 const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
 const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
+
+const eventsJsonLd = upcoming.map(entry => ({
+  '@context': 'https://schema.org',
+  '@type': 'MusicEvent',
+  name: entry.data.piece,
+  startDate: entry.data.date.toISOString().slice(0, 10),
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  eventStatus: 'https://schema.org/EventScheduled',
+  ...(entry.data.venue ? { location: { '@type': 'Place', name: entry.data.venue } } : {}),
+  performer: { '@type': 'Person', name: 'Marie Hänsel' },
+  url: entry.data.ticketLink || 'https://marie-haensel.de/agenda/',
+}));
 ---
 <Layout title="Agenda" description="Konzert- und Opern-Termine von Marie Hänsel">
+  {eventsJsonLd.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify(eventsJsonLd)} />
+  )}
   <h1 class="page-title reveal">Agenda</h1>
   {upcoming.length === 0 && <p class="agenda-empty">Aktuell sind keine Termine hinterlegt.</p>}
   <div class="agenda-list">
