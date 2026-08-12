@@ -61,8 +61,12 @@ const eventsJsonLd = upcoming.map(entry => ({
           {entry.data.composer && <p class="agenda-composer">{entry.data.composer}</p>}
           {entry.data.colleagues && <p class="agenda-meta">{entry.data.colleagues}</p>}
           {entry.data.ensemble && <p class="agenda-meta">{entry.data.ensemble}</p>}
-          {entry.data.venue && <p class="agenda-meta">{entry.data.venue}</p>}
-          {entry.data.ticketLink && <p class="agenda-meta"><a href={entry.data.ticketLink}>Tickets →</a></p>}
+          {entry.data.venue && <p class="agenda-venue">{entry.data.venue}</p>}
+          {entry.data.ticketLink && (
+            <a class="agenda-ticket-link" href={entry.data.ticketLink} target="_blank" rel="noopener">
+              {entry.data.ticketLabel || 'Weitere Infos'}
+            </a>
+          )}
         </div>
       </div>
     ))}

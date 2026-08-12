@@ -400,6 +400,34 @@ h1.page-title, h2.page-title {
   white-space: pre-line;
 }
 
+.agenda-venue {
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin: 0.6rem 0 0.15rem;
+  white-space: pre-line;
+}
+
+.agenda-ticket-link {
+  display: flex;
+  width: fit-content;
+  margin-left: auto;
+  align-items: center;
+  margin-top: 0.65rem;
+  padding: 0.4rem 1.15rem;
+  border-radius: 999px;
+  border: 1.5px solid var(--accent);
+  color: var(--accent);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.agenda-ticket-link:hover {
+  background: var(--accent);
+  color: #fff;
+  text-decoration: none;
+}
+
 .agenda-preview-summary {
   cursor: pointer;
   list-style: none;

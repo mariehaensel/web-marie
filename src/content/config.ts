@@ -11,6 +11,7 @@ const agenda = defineCollection({
     ensemble: z.string().optional(),
     venue: z.string(),
     ticketLink: z.string().optional(),
+    ticketLabel: z.string().optional(),
   }),
 });
 

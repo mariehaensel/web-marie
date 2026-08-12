@@ -42,7 +42,8 @@ collections:
       - { label: "Mitwirkende", name: "colleagues", widget: "text", required: false }
       - { label: "Orchester / Dirigent", name: "ensemble", widget: "string", required: false }
       - { label: "Ort / Venue", name: "venue", widget: "string" }
-      - { label: "Ticket-Link", name: "ticketLink", widget: "string", required: false }
+      - { label: "Link (z. B. Tickets oder weitere Infos)", name: "ticketLink", widget: "string", required: false }
+      - { label: "Beschriftung für den Link", name: "ticketLabel", widget: "string", required: false, hint: "z. B. \"Tickets\" oder \"Weitere Infos\" – ohne Angabe wird \"Weitere Infos\" verwendet." }
       - { label: "Notiz (optional, im Text sichtbar)", name: "body", widget: "text", required: false }
 
   - name: "vita"
