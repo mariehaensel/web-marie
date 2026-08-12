@@ -16,7 +16,10 @@ interface Props {
 const { title, description = 'Marie Hänsel – Sopran', hero = false, noindex = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = new URL('/images/uploads/hero-portrait-3.jpg', Astro.site);
-const pageTitle = `${title} · Marie Hänsel`;
+// Die Startseite bekommt einen eigenständigen, aussagekräftigen Titel statt
+// "Startseite · Marie Hänsel" — Google übernimmt den <title>-Tag oft wörtlich
+// ins Suchergebnis, und "Startseite" sagt nichts über die Person aus.
+const pageTitle = title === 'Startseite' ? 'Marie Hänsel | Sopran' : `${title} · Marie Hänsel`;
 ---
 <!doctype html>
 <html lang="de">
