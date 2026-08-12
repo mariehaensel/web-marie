@@ -12,4 +12,5 @@ colleagues: |-
   Erzgebirgische Philharmonie Aue
   Leitung: Hans-Christoph Rademann
 venue: St. Wolfgangskirche, Schneeberg
+ticketLink: https://musikfesterzgebirge.de/
 ---
