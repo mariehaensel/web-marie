@@ -30,16 +30,42 @@ const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
 const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
 
+// Deutschland wechselt zwischen MEZ/MESZ, daher wird der UTC-Offset pro
+// Datum über Intl aufgelöst statt fest verdrahtet (sonst wäre der Termin im
+// JSON-LD im Sommer/Winter je eine Stunde daneben).
+function getBerlinOffset(date: Date): string {
+  const parts = new Intl.DateTimeFormat('en-US', {
+    timeZone: 'Europe/Berlin',
+    timeZoneName: 'shortOffset',
+  }).formatToParts(date);
+  const tzPart = parts.find(part => part.type === 'timeZoneName')?.value ?? 'GMT+1';
+  const hours = Number(tzPart.replace('GMT', '')) || 1;
+  const sign = hours >= 0 ? '+' : '-';
+  return `${sign}${String(Math.abs(hours)).padStart(2, '0')}:00`;
+}
+
+// "Uhrzeit" ist ein freies Textfeld im CMS (z. B. "19:30 Uhr"), keine
+// validierte Eingabe -- ein nicht auswertbarer Wert darf höchstens die
+// Uhrzeit im JSON-LD kosten, nie das ganze Datum.
+function getEventStartDate(entry: (typeof upcoming)[number]['data']): string {
+  const dateStr = entry.date.toISOString().slice(0, 10);
+  const timeMatch = entry.time?.match(/(\d{1,2}):(\d{2})/);
+  if (!timeMatch) return dateStr;
+  const withOffset = `${dateStr}T${timeMatch[1].padStart(2, '0')}:${timeMatch[2]}:00${getBerlinOffset(entry.date)}`;
+  return Number.isNaN(Date.parse(withOffset)) ? dateStr : withOffset;
+}
+
 const eventsJsonLd = upcoming.map(entry => ({
   '@context': 'https://schema.org',
   '@type': 'MusicEvent',
   name: entry.data.piece,
-  startDate: entry.data.date.toISOString().slice(0, 10),
+  startDate: getEventStartDate(entry.data),
   eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
   eventStatus: 'https://schema.org/EventScheduled',
   ...(entry.data.venue ? { location: { '@type': 'Place', name: entry.data.venue } } : {}),
   performer: { '@type': 'Person', name: 'Marie Hänsel' },
   url: entry.data.ticketLink || 'https://marie-haensel.de/agenda/',
+  ...(entry.data.colleagues ? { description: entry.data.colleagues } : {}),
 }));
 ---
 <Layout title="Agenda" description="Konzert- und Opern-Termine von Marie Hänsel">
