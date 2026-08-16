@@ -68,7 +68,7 @@ const pageTitle = title === 'Startseite' ? 'Marie Hänsel | Sopran' : `${title} 
       <p id="lightbox-caption" class="lightbox-caption"></p>
     </div>
   </dialog>
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" is:inline></script>
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer is:inline></script>
   <script is:inline>
     document.addEventListener('DOMContentLoaded', () => {
       const els = document.querySelectorAll('.reveal');
@@ -134,7 +134,7 @@ const pageTitle = title === 'Startseite' ? 'Marie Hänsel | Sopran' : `${title} 
       }
     });
   </script>
-  <script is:inline>
+  <script defer is:inline>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {
