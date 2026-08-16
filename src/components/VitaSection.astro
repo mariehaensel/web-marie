@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import OptimizedImage from './OptimizedImage.astro';
 
 const [entry] = await getCollection('vita');
 ---
 <section class="fullscreen-section vita-section">
   <div class="vita-photo">
-    <img src={entry?.data.photo} alt="Portrait von Marie Hänsel" loading="lazy" />
+    <OptimizedImage src={entry?.data.photo ?? ''} alt="Portrait von Marie Hänsel" loading="lazy" />
   </div>
   <div class="vita-text container">
     <h2 class="section-heading">Vita</h2>

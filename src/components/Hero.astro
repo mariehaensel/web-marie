@@ -1,11 +1,12 @@
 ---
 import { getCollection } from 'astro:content';
+import OptimizedImage from './OptimizedImage.astro';
 
 const [entry] = await getCollection('home');
 ---
 <section class="hero-section">
   <div class="hero-media">
-    <img src={entry?.data.heroImage} alt={entry?.data.heroImageAlt ?? 'Portrait'} fetchpriority="high" loading="eager" />
+    <OptimizedImage src={entry?.data.heroImage ?? ''} alt={entry?.data.heroImageAlt ?? 'Portrait'} fetchpriority="high" loading="eager" />
     <div class="hero-scrim-top" aria-hidden="true"></div>
   </div>
 </section>

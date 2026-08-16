@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { getCollection } from 'astro:content';
 
 const all = await getCollection('media');
@@ -18,7 +19,7 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
     <div class="media-grid">
       {videos.map(item => (
         <a class="media-tile-grid" href={item.data.videoUrl} target="_blank" rel="noopener">
-          <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+          <OptimizedImage src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           <span class="media-play" aria-hidden="true">▶</span>
           {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
@@ -35,7 +36,7 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
       {buehne.map(item => (
         <figure>
           <button type="button" class="media-tile-grid" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
-            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            <OptimizedImage src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           </button>
           {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
@@ -52,7 +53,7 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
       {portraits.map(item => (
         <figure>
           <button type="button" class="media-tile-grid" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
-            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            <OptimizedImage src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
           </button>
           {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
           {item.data.credit && <span class="media-credit">Foto: {item.data.credit}</span>}
@@ -66,14 +67,14 @@ const rest = all.filter(item => !['video', 'buehne', 'portrait'].includes(item.d
       {rest.map(item => (
         item.data.videoUrl ? (
           <a class="media-tile-grid" href={item.data.videoUrl} target="_blank" rel="noopener">
-            <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+            <OptimizedImage src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
             <span class="media-play" aria-hidden="true">▶</span>
             {item.data.caption && <span class="media-caption">{item.data.caption}</span>}
           </a>
         ) : (
           <figure>
             <button type="button" class="media-tile-grid" data-lightbox={item.data.image} data-lightbox-caption={item.data.caption ?? item.data.title}>
-              <img src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
+              <OptimizedImage src={item.data.image} alt={item.data.caption ?? item.data.title} loading="lazy" />
             </button>
             {item.data.caption && <figcaption>{item.data.caption}</figcaption>}
           </figure>

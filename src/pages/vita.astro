@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { getCollection, render } from 'astro:content';
 
 const [vitaEntry] = await getCollection('vita');
@@ -8,7 +9,7 @@ const { Content } = vitaEntry ? await render(vitaEntry) : { Content: null };
 <Layout title="Vita" description="Vita der Sopranistin Marie Hänsel: Ausbildung, Ensemblemitgliedschaft am Opernhaus Chemnitz, Preise und Wettbewerbserfolge.">
   <div class="vita-section">
     <div class="vita-photo">
-      <img src={vitaEntry?.data.photo} alt="Portrait von Marie Hänsel" loading="lazy" />
+      <OptimizedImage src={vitaEntry?.data.photo ?? ''} alt="Portrait von Marie Hänsel" loading="lazy" />
     </div>
     <div class="vita-text">
       <h1 class="page-title">Vita</h1>

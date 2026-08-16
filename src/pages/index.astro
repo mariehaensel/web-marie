@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import VitaSection from '../components/VitaSection.astro';
 import MediaSection from '../components/MediaSection.astro';
+import OptimizedImage from '../components/OptimizedImage.astro';
 import { getCollection } from 'astro:content';
 
 const agenda = (await getCollection('agenda'))
@@ -71,7 +72,7 @@ const personJsonLd = {
 
   <section class="fullscreen-section home-section kontakt-section kontakt-teaser">
     <div class="kontakt-bg" aria-hidden="true">
-      <img src={kontakt?.data.backgroundImage} alt="" loading="lazy" />
+      <OptimizedImage src={kontakt?.data.backgroundImage ?? ''} alt="" loading="lazy" />
     </div>
     <div class="kontakt-scrim" aria-hidden="true"></div>
     <h2 class="section-heading kontakt-teaser-heading">Kontakt</h2>
