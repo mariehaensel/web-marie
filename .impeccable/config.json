@@ -11,6 +11,42 @@
         ],
         "createdAt": "2026-08-10T06:18:36.904Z",
         "reason": "User explicitly designed and approved the red accent border on the Agenda date block across multiple iterations this session"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(0, 0, 0, 0.35)",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-08-17T18:36:11.830Z",
+        "reason": "One-off text-shadow tuned for legibility of white header text over the hero photo; not a reusable token"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "rgba(156, 122, 60, 0.16)",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-08-17T18:36:11.879Z",
+        "reason": "One-off warm-tinted drop shadow for the slide-in menu drawer, tuned to match --menu-bg; not reused elsewhere"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "2rem",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-08-17T18:36:11.936Z",
+        "reason": "Fluid clamp() floor for the responsive site title, not a fixed type-ramp step"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "1.45rem",
+        "files": [
+          "src/styles/global.css"
+        ],
+        "createdAt": "2026-08-17T18:36:11.988Z",
+        "reason": "One-off size for the header subtitle, tuned relative to the title; not reused elsewhere"
       }
     ]
   }

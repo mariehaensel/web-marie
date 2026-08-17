@@ -12,6 +12,8 @@
   --font-display: 'Urbanist', var(--font-sans);
   --menu-bg: #f7ebe3;
   --menu-bg-raised: #fbf3ec;
+  --radius-sm: 4px;
+  --border-menu-divider: rgba(16, 17, 20, 0.1);
 }
 
 * { box-sizing: border-box; }
@@ -215,9 +217,9 @@ header.site-header.header-overlay.scrolled .site-subtitle-header { color: var(--
 }
 
 .nav-panel li {
-  border-bottom: 1px solid rgba(16, 17, 20, 0.1);
+  border-bottom: 1px solid var(--border-menu-divider);
 }
-.nav-panel li:first-child { border-top: 1px solid rgba(16, 17, 20, 0.1); }
+.nav-panel li:first-child { border-top: 1px solid var(--border-menu-divider); }
 
 .nav-panel a {
   display: inline-flex;
@@ -333,7 +335,7 @@ h1.page-title, h2.page-title {
   border-bottom: 1px solid var(--line);
   padding: 1.5rem 1rem 1.75rem;
   margin: 0 -1rem;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   transition: background 0.2s ease;
 }
 
@@ -692,7 +694,7 @@ h1.page-title, h2.page-title {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   filter: contrast(1.22) saturate(1.1) brightness(0.94);
 }
 
@@ -812,7 +814,7 @@ h1.page-title, h2.page-title {
   object-fit: cover;
   display: block;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
 }
 
 .media-play {
@@ -901,7 +903,7 @@ a.media-tile:hover { text-decoration: none; }
   font-size: 1rem;
   padding: 0.65rem 0.75rem;
   border: 1px solid var(--line);
-  border-radius: 4px;
+  border-radius: var(--radius-sm);
   background: var(--paper-raised);
   color: var(--ink);
 }
