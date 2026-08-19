@@ -17,6 +17,20 @@ const dayFormatter = new Intl.DateTimeFormat('de-DE', { day: '2-digit' });
 const monthFormatter = new Intl.DateTimeFormat('de-DE', { month: 'short' });
 const yearFormatter = new Intl.DateTimeFormat('de-DE', { year: 'numeric' });
 
+const externalProfiles = [
+  'https://musicbrainz.org/artist/cfdbaba6-0f0f-4851-adc2-fd887d3bc3ee',
+  'https://www.saechsischer-musikrat.de/personen/marie-haensel/',
+  'https://www.serkowitzer-volksoper.de/stage_detail.php?id=99',
+  'https://www.theater-chemnitz.de/spielplan/kuenstlerdetails/1108',
+  'https://dasorchester.de/artikel/der-schuhu-und-die-fliegende-prinzessin/',
+  'https://operabase.com/a32554',
+  'https://www.wikidata.org/wiki/Q139242604',
+  'https://open.spotify.com/artist/690N6FR6cQuWQKkPIppnID',
+  'https://www.theapolis.de/de/profil/marie-haensel',
+  'https://www.hfmdd.de/aktuelles/715-marie-haensel-sopran',
+  'https://www.debut.de/newspresse/news/news/article/liedpreise-fuer-marie-haensel-und-daniel-foki',
+];
+
 const personJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'Person',
@@ -25,7 +39,7 @@ const personJsonLd = {
   url: 'https://marie-haensel.de/',
   image: 'https://marie-haensel.de/images/uploads/hero-portrait-3.jpg',
   description: 'Sopranistin mit Schwerpunkt Oper, Konzert und Lied.',
-  ...(kontakt?.data.instagram ? { sameAs: [kontakt.data.instagram] } : {}),
+  sameAs: [...(kontakt?.data.instagram ? [kontakt.data.instagram] : []), ...externalProfiles],
 };
 ---
 <Layout title="Startseite" hero={true} description="Marie Hänsel, Sopranistin — Konzerte, Opernpartien und Liederabende. Agenda, Vita, Media und Kontakt.">
