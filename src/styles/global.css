@@ -1183,6 +1183,7 @@ footer.site-footer {
 @media (min-width: 900px) {
   html:has(.fullscreen-section) {
     scroll-snap-type: y mandatory;
+    scroll-padding-top: var(--header-h);
   }
 
   .hero-section,
