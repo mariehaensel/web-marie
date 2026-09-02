@@ -1181,17 +1181,6 @@ footer.site-footer {
 
 /* Fullscreen desktop sections */
 @media (min-width: 900px) {
-  html:has(.fullscreen-section) {
-    scroll-snap-type: y mandatory;
-    scroll-padding-top: var(--header-h);
-  }
-
-  .hero-section,
-  .fullscreen-section,
-  footer.site-footer {
-    scroll-snap-align: start;
-  }
-
   .fullscreen-section {
     width: 100vw;
     margin-left: calc(50% - 50vw);
