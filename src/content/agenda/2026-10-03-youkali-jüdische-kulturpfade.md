@@ -2,7 +2,7 @@
 slug: Youkali Jüdische Kulturpfade
 date: 2026-10-03
 time: 10:00
-piece: Lieder
+piece: Symposium "Fokus jüdische Kulturwege" Dresden
 composer: Elena Schoychet, Siegfried Sonnenschein
 colleagues: |-
   Elena Schoychet: Klavier
