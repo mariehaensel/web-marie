@@ -1,0 +1,17 @@
+---
+slug: Mendelssohn Psalm 42
+date: 2026-11-14
+time: 18:00
+piece: Psalm 42, Wie der Hirsch schreit nach frischem Wasser
+composer: Felix Mendelssohn Bartholdy
+colleagues: |
+  Marie Hänsel, Sopran
+  Maximilian Fieth, Tenor
+  Hanno Kreft, Bass
+  Kantorei Siegen
+
+  Camerata Instrumentale Siegen
+ensemble: "Leitung: Ute Debus "
+venue: Evangelischen Kirche Hilchenbach
+ticketLink: https://www.kantorei-siegen.de/konzert/zuversicht-mendelssohn-puccini/
+---
